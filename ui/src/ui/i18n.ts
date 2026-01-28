@@ -318,6 +318,348 @@ export type TranslationKey =
   | "channels.telegram.probe"
   | "channels.telegram.probeOk"
   | "channels.telegram.probeFailed"
+  | "channels.telegram.field.accounts"
+  | "channels.telegram.field.actions"
+  | "channels.telegram.field.deleteMessage"
+  | "channels.telegram.field.reactions"
+  | "channels.telegram.field.sendMessage"
+  | "channels.telegram.field.sticker"
+  | "channels.telegram.field.allowFrom"
+  | "channels.telegram.field.groupPolicy"
+  | "channels.telegram.field.dmPolicy"
+  | "channels.telegram.field.groupAllowFrom"
+  | "channels.telegram.field.groups"
+  | "channels.telegram.field.enabled"
+  | "channels.telegram.field.botToken"
+  | "channels.telegram.field.requireMention"
+  | "channels.telegram.field.customCommands"
+  | "channels.telegram.field.streamMode"
+  | "channels.telegram.field.draftChunk"
+  | "channels.telegram.field.retry"
+  | "channels.telegram.field.network"
+  | "channels.telegram.field.timeoutSeconds"
+  | "channels.telegram.field.capabilities"
+  | "channels.telegram.field.inlineButtons"
+  | "channels.telegram.field.blockStreaming"
+  | "channels.telegram.field.blockStreamingCoalesce"
+  | "channels.telegram.field.idleMs"
+  | "channels.telegram.field.maxChars"
+  | "channels.telegram.field.minChars"
+  | "channels.telegram.field.chunkMode"
+  | "channels.telegram.field.length"
+  | "channels.telegram.field.newline"
+  | "channels.telegram.field.commands"
+  | "channels.telegram.field.native"
+  | "channels.telegram.field.nativeSkills"
+  | "channels.telegram.field.configWrites"
+  | "channels.telegram.field.dmHistoryLimit"
+  | "channels.telegram.field.dms"
+  | "channels.telegram.field.replyToMode"
+  | "channels.telegram.field.off"
+  | "channels.telegram.field.first"
+  | "channels.telegram.field.all"
+  | "channels.telegram.field.attempts"
+  | "channels.telegram.field.jitter"
+  | "channels.telegram.field.maxDelayMs"
+  | "channels.telegram.field.minDelayMs"
+  | "channels.telegram.field.breakPreference"
+  | "channels.telegram.field.paragraph"
+  | "channels.telegram.field.sentence"
+  | "channels.telegram.field.partial"
+  | "channels.telegram.field.block"
+  | "channels.telegram.field.reactionNotifications"
+  | "channels.telegram.field.own"
+  | "channels.telegram.field.textChunkLimit"
+  | "channels.telegram.field.tokenFile"
+  | "channels.telegram.field.webhookPath"
+  | "channels.telegram.field.webhookSecret"
+  | "channels.telegram.field.webhookUrl"
+  | "channels.telegram.field.useIndicator"
+  | "channels.telegram.field.historyLimit"
+  | "channels.telegram.field.linkPreview"
+  | "channels.telegram.field.markdown"
+  | "channels.telegram.field.tables"
+  | "channels.telegram.field.mediaMaxMb"
+  | "channels.telegram.field.bullets"
+  | "channels.telegram.field.code"
+  | "channels.telegram.field.pairing"
+  | "channels.telegram.field.allowlist"
+  | "channels.telegram.field.open"
+  | "channels.telegram.field.disabled"
+  | "channels.telegram.field.ack"
+  | "channels.telegram.field.minimal"
+  | "channels.telegram.field.extensive"
+  | "channels.telegram.field.draftChunk.minChars"
+  | "channels.telegram.field.draftChunk.maxChars"
+  | "channels.telegram.field.draftChunk.breakPreference"
+  | "channels.telegram.field.retry.attempts"
+  | "channels.telegram.field.retry.minDelayMs"
+  | "channels.telegram.field.retry.maxDelayMs"
+  | "channels.telegram.field.retry.jitter"
+  | "channels.telegram.field.network.autoSelectFamily"
+  | "channels.telegram.field.capabilities.inlineButtons"
+  | "config.field.update.checkOnStart"
+  | "config.field.diagnostics.cacheTrace"
+  | "config.field.diagnostics.cacheTrace.enabled"
+  | "config.field.diagnostics.cacheTrace.filePath"
+  | "config.field.diagnostics.cacheTrace.includeMessages"
+  | "config.field.diagnostics.cacheTrace.includePrompt"
+  | "config.field.diagnostics.cacheTrace.includeSystem"
+  | "config.field.meta.lastTouchedVersion"
+  | "config.field.meta.lastTouchedAt"
+  | "config.field.update.channel"
+  | "config.field.diagnostics.enabled"
+  | "config.field.diagnostics.flags"
+  | "config.field.diagnostics.otel.enabled"
+  | "config.field.diagnostics.otel.endpoint"
+  | "config.field.diagnostics.otel.protocol"
+  | "config.field.diagnostics.otel.headers"
+  | "config.field.diagnostics.otel.serviceName"
+  | "config.field.diagnostics.otel.traces"
+  | "config.field.diagnostics.otel.metrics"
+  | "config.field.diagnostics.otel.logs"
+  | "config.field.diagnostics.otel.sampleRate"
+  | "config.field.diagnostics.otel.flushIntervalMs"
+  | "config.field.gateway.remote.url"
+  | "config.field.gateway.remote.sshTarget"
+  | "config.field.gateway.remote.sshIdentity"
+  | "config.field.gateway.remote.token"
+  | "config.field.gateway.remote.password"
+  | "config.field.gateway.remote.tlsFingerprint"
+  | "config.field.gateway.auth.token"
+  | "config.field.gateway.auth.password"
+  | "config.field.gateway.controlUi.basePath"
+  | "config.field.gateway.controlUi.allowInsecureAuth"
+  | "config.field.gateway.controlUi.dangerouslyDisableDeviceAuth"
+  | "config.field.gateway.http.endpoints.chatCompletions.enabled"
+  | "config.field.gateway.reload.mode"
+  | "config.field.gateway.reload.debounceMs"
+  | "config.field.gateway.nodes.browser.mode"
+  | "config.field.gateway.nodes.browser.node"
+  | "config.field.gateway.nodes.allowCommands"
+  | "config.field.gateway.nodes.denyCommands"
+  | "config.field.tools.media.image.enabled"
+  | "config.field.tools.media.image.maxBytes"
+  | "config.field.tools.media.image.maxChars"
+  | "config.field.tools.media.image.prompt"
+  | "config.field.tools.media.image.timeoutSeconds"
+  | "config.field.tools.media.image.attachments"
+  | "config.field.tools.media.image.models"
+  | "config.field.tools.media.image.scope"
+  | "config.field.tools.media.models"
+  | "config.field.tools.media.concurrency"
+  | "config.field.tools.media.audio.enabled"
+  | "config.field.tools.media.audio.maxBytes"
+  | "config.field.tools.media.audio.maxChars"
+  | "config.field.tools.media.audio.prompt"
+  | "config.field.tools.media.audio.timeoutSeconds"
+  | "config.field.tools.media.audio.language"
+  | "config.field.tools.media.audio.attachments"
+  | "config.field.tools.media.audio.models"
+  | "config.field.tools.media.audio.scope"
+  | "config.field.tools.media.video.enabled"
+  | "config.field.tools.media.video.maxBytes"
+  | "config.field.tools.media.video.maxChars"
+  | "config.field.tools.media.video.prompt"
+  | "config.field.tools.media.video.timeoutSeconds"
+  | "config.field.tools.media.video.attachments"
+  | "config.field.tools.media.video.models"
+  | "config.field.tools.media.video.scope"
+  | "config.field.tools.links.enabled"
+  | "config.field.tools.links.maxLinks"
+  | "config.field.tools.links.timeoutSeconds"
+  | "config.field.tools.links.models"
+  | "config.field.tools.links.scope"
+  | "config.field.tools.profile"
+  | "config.field.tools.alsoAllow"
+  | "config.field.tools.byProvider"
+  | "config.field.tools.exec.applyPatch.enabled"
+  | "config.field.tools.exec.applyPatch.allowModels"
+  | "config.field.tools.exec.notifyOnExit"
+  | "config.field.tools.exec.approvalRunningNoticeMs"
+  | "config.field.tools.exec.host"
+  | "config.field.tools.exec.security"
+  | "config.field.tools.exec.ask"
+  | "config.field.tools.exec.node"
+  | "config.field.tools.exec.pathPrepend"
+  | "config.field.tools.exec.safeBins"
+  | "config.field.tools.message.allowCrossContextSend"
+  | "config.field.tools.message.crossContext.allowWithinProvider"
+  | "config.field.tools.message.crossContext.allowAcrossProviders"
+  | "config.field.tools.message.crossContext.marker.enabled"
+  | "config.field.tools.message.crossContext.marker.prefix"
+  | "config.field.tools.message.crossContext.marker.suffix"
+  | "config.field.tools.message.broadcast.enabled"
+  | "config.field.tools.web.search.enabled"
+  | "config.field.tools.web.search.provider"
+  | "config.field.tools.web.search.apiKey"
+  | "config.field.tools.web.search.maxResults"
+  | "config.field.tools.web.search.timeoutSeconds"
+  | "config.field.tools.web.search.cacheTtlMinutes"
+  | "config.field.tools.web.fetch.enabled"
+  | "config.field.tools.web.fetch.maxChars"
+  | "config.field.tools.web.fetch.timeoutSeconds"
+  | "config.field.tools.web.fetch.cacheTtlMinutes"
+  | "config.field.tools.web.fetch.maxRedirects"
+  | "config.field.tools.web.fetch.userAgent"
+  | "config.field.agents.defaults.workspace"
+  | "config.field.agents.defaults.repoRoot"
+  | "config.field.agents.defaults.bootstrapMaxChars"
+  | "config.field.agents.defaults.envelopeTimezone"
+  | "config.field.agents.defaults.envelopeTimestamp"
+  | "config.field.agents.defaults.envelopeElapsed"
+  | "config.field.agents.defaults.memorySearch"
+  | "config.field.agents.defaults.memorySearch.enabled"
+  | "config.field.agents.defaults.memorySearch.sources"
+  | "config.field.agents.defaults.memorySearch.experimental.sessionMemory"
+  | "config.field.agents.defaults.memorySearch.provider"
+  | "config.field.agents.defaults.memorySearch.remote.baseUrl"
+  | "config.field.agents.defaults.memorySearch.remote.apiKey"
+  | "config.field.agents.defaults.memorySearch.remote.headers"
+  | "config.field.agents.defaults.memorySearch.remote.batch.concurrency"
+  | "config.field.agents.defaults.memorySearch.model"
+  | "config.field.agents.defaults.memorySearch.fallback"
+  | "config.field.agents.defaults.memorySearch.local.modelPath"
+  | "config.field.agents.defaults.memorySearch.store.path"
+  | "config.field.agents.defaults.memorySearch.store.vector.enabled"
+  | "config.field.agents.defaults.memorySearch.store.vector.extensionPath"
+  | "config.field.agents.defaults.memorySearch.chunking.tokens"
+  | "config.field.agents.defaults.memorySearch.chunking.overlap"
+  | "config.field.agents.defaults.memorySearch.sync.onSessionStart"
+  | "config.field.agents.defaults.memorySearch.sync.onSearch"
+  | "config.field.agents.defaults.memorySearch.sync.watch"
+  | "config.field.agents.defaults.memorySearch.sync.watchDebounceMs"
+  | "config.field.agents.defaults.memorySearch.sync.sessions.deltaBytes"
+  | "config.field.agents.defaults.memorySearch.sync.sessions.deltaMessages"
+  | "config.field.agents.defaults.memorySearch.query.maxResults"
+  | "config.field.agents.defaults.memorySearch.query.minScore"
+  | "config.field.agents.defaults.memorySearch.query.hybrid.enabled"
+  | "config.field.agents.defaults.memorySearch.query.hybrid.vectorWeight"
+  | "config.field.agents.defaults.memorySearch.query.hybrid.textWeight"
+  | "config.field.agents.defaults.memorySearch.query.hybrid.candidateMultiplier"
+  | "config.field.agents.defaults.memorySearch.cache.enabled"
+  | "config.field.agents.defaults.memorySearch.cache.maxEntries"
+  | "config.field.agents.defaults.models"
+  | "config.field.agents.defaults.model.primary"
+  | "config.field.agents.defaults.model.fallbacks"
+  | "config.field.agents.defaults.imageModel.primary"
+  | "config.field.agents.defaults.imageModel.fallbacks"
+  | "config.field.agents.defaults.humanDelay.mode"
+  | "config.field.agents.defaults.humanDelay.minMs"
+  | "config.field.agents.defaults.humanDelay.maxMs"
+  | "config.field.agents.defaults.cliBackends"
+  | "config.field.auth.profiles"
+  | "config.field.auth.order"
+  | "config.field.auth.cooldowns.billingBackoffHours"
+  | "config.field.auth.cooldowns.billingBackoffHoursByProvider"
+  | "config.field.auth.cooldowns.billingMaxHours"
+  | "config.field.auth.cooldowns.failureWindowHours"
+  | "config.field.commands.native"
+  | "config.field.commands.nativeSkills"
+  | "config.field.commands.text"
+  | "config.field.commands.bash"
+  | "config.field.commands.bashForegroundMs"
+  | "config.field.commands.config"
+  | "config.field.commands.debug"
+  | "config.field.commands.restart"
+  | "config.field.commands.useAccessGroups"
+  | "config.field.ui.seamColor"
+  | "config.field.ui.assistant.name"
+  | "config.field.ui.assistant.avatar"
+  | "config.field.browser.evaluateEnabled"
+  | "config.field.browser.snapshotDefaults"
+  | "config.field.browser.snapshotDefaults.mode"
+  | "config.field.browser.remoteCdpTimeoutMs"
+  | "config.field.browser.remoteCdpHandshakeTimeoutMs"
+  | "config.field.session.dmScope"
+  | "config.field.session.agentToAgent.maxPingPongTurns"
+  | "config.field.messages.ackReaction"
+  | "config.field.messages.ackReactionScope"
+  | "config.field.messages.inbound.debounceMs"
+  | "config.field.talk.apiKey"
+  | "config.field.skills.load.watch"
+  | "config.field.skills.load.watchDebounceMs"
+  | "config.field.plugins.enabled"
+  | "config.field.plugins.allow"
+  | "config.field.plugins.deny"
+  | "config.field.plugins.load.paths"
+  | "config.field.plugins.slots"
+  | "config.field.plugins.slots.memory"
+  | "config.field.plugins.entries"
+  | "config.field.discovery.mdns.mode"
+  | "config.field.nodeHost.browserProxy.enabled"
+  | "config.field.nodeHost.browserProxy.allowProfiles"
+  | "config.field.agents.list.identity.avatar"
+  | "config.field.agents.list.tools.profile"
+  | "config.field.agents.list.tools.alsoAllow"
+  | "config.field.agents.list.tools.byProvider"
+  | "config.field.plugins.entries.enabled"
+  | "config.field.plugins.entries.config"
+  | "config.field.plugins.installs.source"
+  | "config.field.plugins.installs.spec"
+  | "config.field.plugins.installs.sourcePath"
+  | "config.field.plugins.installs.installPath"
+  | "config.field.plugins.installs.version"
+  | "config.field.plugins.installs.installedAt"
+  | "channels.discord.field.accounts"
+  | "channels.discord.field.actions"
+  | "channels.discord.field.dm"
+  | "channels.discord.field.guilds"
+  | "channels.discord.field.token"
+  | "channels.discord.field.enabled"
+  | "channels.discord.field.groupPolicy"
+  | "channels.discord.field.groupAllowFrom"
+  | "channels.discord.field.allowFrom"
+  | "channels.discord.field.requireMention"
+  | "channels.discord.field.channels"
+  | "channels.discord.field.slashCommand"
+  | "channels.whatsapp.field.accounts"
+  | "channels.whatsapp.field.actions"
+  | "channels.whatsapp.field.dmPolicy"
+  | "channels.whatsapp.field.groupPolicy"
+  | "channels.whatsapp.field.allowFrom"
+  | "channels.whatsapp.field.groupAllowFrom"
+  | "channels.whatsapp.field.groups"
+  | "channels.whatsapp.field.enabled"
+  | "channels.whatsapp.field.selfChatMode"
+  | "channels.whatsapp.field.debounceMs"
+  | "channels.slack.field.accounts"
+  | "channels.slack.field.actions"
+  | "channels.slack.field.dm"
+  | "channels.slack.field.channels"
+  | "channels.slack.field.guilds"
+  | "channels.slack.field.botToken"
+  | "channels.slack.field.appToken"
+  | "channels.slack.field.userToken"
+  | "channels.slack.field.enabled"
+  | "channels.slack.field.groupPolicy"
+  | "channels.slack.field.allowFrom"
+  | "channels.slack.field.requireMention"
+  | "channels.slack.field.slashCommand"
+  | "channels.signal.field.accounts"
+  | "channels.signal.field.actions"
+  | "channels.signal.field.dmPolicy"
+  | "channels.signal.field.groupPolicy"
+  | "channels.signal.field.allowFrom"
+  | "channels.signal.field.groupAllowFrom"
+  | "channels.signal.field.groups"
+  | "channels.signal.field.enabled"
+  | "channels.signal.field.account"
+  | "channels.signal.field.baseUrl"
+  | "channels.imessage.field.accounts"
+  | "channels.imessage.field.actions"
+  | "channels.imessage.field.dmPolicy"
+  | "channels.imessage.field.groupPolicy"
+  | "channels.imessage.field.allowFrom"
+  | "channels.imessage.field.groupAllowFrom"
+  | "channels.imessage.field.groups"
+  | "channels.imessage.field.enabled"
+  | "channels.imessage.field.cliPath"
+  | "channels.googlechat.field.accounts"
+  | "channels.googlechat.field.actions"
+  | "channels.googlechat.field.enabled"
+  | "channels.googlechat.field.credential"
+  | "channels.googlechat.field.audience"
   | "channels.discord.subtitle"
   | "channels.googlechat.subtitle"
   | "channels.config.schemaUnavailable"
@@ -765,6 +1107,348 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "channels.telegram.probe": "探测",
     "channels.telegram.probeOk": "探测正常",
     "channels.telegram.probeFailed": "探测失败",
+    "channels.telegram.field.accounts": "账户",
+    "channels.telegram.field.actions": "操作",
+    "channels.telegram.field.deleteMessage": "删除消息",
+    "channels.telegram.field.reactions": "反应",
+    "channels.telegram.field.sendMessage": "发送消息",
+    "channels.telegram.field.sticker": "贴纸",
+    "channels.telegram.field.allowFrom": "允许来源",
+    "channels.telegram.field.groupPolicy": "群组策略",
+    "channels.telegram.field.dmPolicy": "私信策略",
+    "channels.telegram.field.groupAllowFrom": "群组允许来源",
+    "channels.telegram.field.groups": "群组",
+    "channels.telegram.field.enabled": "启用",
+    "channels.telegram.field.botToken": "机器人令牌",
+    "channels.telegram.field.requireMention": "需要提及",
+    "channels.telegram.field.customCommands": "自定义命令",
+    "channels.telegram.field.streamMode": "流模式",
+    "channels.telegram.field.draftChunk": "草稿块",
+    "channels.telegram.field.retry": "重试",
+    "channels.telegram.field.network": "网络",
+    "channels.telegram.field.timeoutSeconds": "超时（秒）",
+    "channels.telegram.field.capabilities": "能力",
+    "channels.telegram.field.inlineButtons": "内联按钮",
+    "channels.telegram.field.blockStreaming": "阻止流式传输",
+    "channels.telegram.field.blockStreamingCoalesce": "阻止流式传输合并",
+    "channels.telegram.field.idleMs": "空闲（毫秒）",
+    "channels.telegram.field.maxChars": "最大字符数",
+    "channels.telegram.field.minChars": "最小字符数",
+    "channels.telegram.field.chunkMode": "块模式",
+    "channels.telegram.field.length": "长度",
+    "channels.telegram.field.newline": "换行",
+    "channels.telegram.field.commands": "命令",
+    "channels.telegram.field.native": "原生",
+    "channels.telegram.field.nativeSkills": "原生技能",
+    "channels.telegram.field.configWrites": "配置写入",
+    "channels.telegram.field.dmHistoryLimit": "私信历史限制",
+    "channels.telegram.field.dms": "私信",
+    "channels.telegram.field.replyToMode": "回复模式",
+    "channels.telegram.field.off": "关闭",
+    "channels.telegram.field.first": "首个",
+    "channels.telegram.field.all": "全部",
+    "channels.telegram.field.attempts": "尝试次数",
+    "channels.telegram.field.jitter": "抖动",
+    "channels.telegram.field.maxDelayMs": "最大延迟（毫秒）",
+    "channels.telegram.field.minDelayMs": "最小延迟（毫秒）",
+    "channels.telegram.field.breakPreference": "断点偏好",
+    "channels.telegram.field.paragraph": "段落",
+    "channels.telegram.field.sentence": "句子",
+    "channels.telegram.field.partial": "部分",
+    "channels.telegram.field.block": "块",
+    "channels.telegram.field.reactionNotifications": "反应通知",
+    "channels.telegram.field.own": "自己的",
+    "channels.telegram.field.textChunkLimit": "文本块限制",
+    "channels.telegram.field.tokenFile": "令牌文件",
+    "channels.telegram.field.webhookPath": "Webhook 路径",
+    "channels.telegram.field.webhookSecret": "Webhook 密钥",
+    "channels.telegram.field.webhookUrl": "Webhook URL",
+    "channels.telegram.field.useIndicator": "使用指示器",
+    "channels.telegram.field.historyLimit": "历史限制",
+    "channels.telegram.field.linkPreview": "链接预览",
+    "channels.telegram.field.markdown": "Markdown",
+    "channels.telegram.field.tables": "表格",
+    "channels.telegram.field.mediaMaxMb": "媒体最大 MB",
+    "channels.telegram.field.bullets": "项目符号",
+    "channels.telegram.field.code": "代码",
+    "channels.telegram.field.pairing": "配对",
+    "channels.telegram.field.allowlist": "允许列表",
+    "channels.telegram.field.open": "开放",
+    "channels.telegram.field.disabled": "禁用",
+    "channels.telegram.field.ack": "确认",
+    "channels.telegram.field.minimal": "最小",
+    "channels.telegram.field.extensive": "扩展",
+    "channels.telegram.field.draftChunk.minChars": "草稿块最小字符数",
+    "channels.telegram.field.draftChunk.maxChars": "草稿块最大字符数",
+    "channels.telegram.field.draftChunk.breakPreference": "草稿块断点偏好",
+    "channels.telegram.field.retry.attempts": "重试尝试次数",
+    "channels.telegram.field.retry.minDelayMs": "重试最小延迟（毫秒）",
+    "channels.telegram.field.retry.maxDelayMs": "重试最大延迟（毫秒）",
+    "channels.telegram.field.retry.jitter": "重试抖动",
+    "channels.telegram.field.network.autoSelectFamily": "网络自动选择族",
+    "channels.telegram.field.capabilities.inlineButtons": "能力内联按钮",
+    "config.field.update.checkOnStart": "启动时检查更新",
+    "config.field.diagnostics.cacheTrace": "缓存跟踪",
+    "config.field.diagnostics.cacheTrace.enabled": "缓存跟踪已启用",
+    "config.field.diagnostics.cacheTrace.filePath": "缓存跟踪文件路径",
+    "config.field.diagnostics.cacheTrace.includeMessages": "缓存跟踪包含消息",
+    "config.field.diagnostics.cacheTrace.includePrompt": "缓存跟踪包含提示",
+    "config.field.diagnostics.cacheTrace.includeSystem": "缓存跟踪包含系统",
+    "config.field.meta.lastTouchedVersion": "配置最后修改版本",
+    "config.field.meta.lastTouchedAt": "配置最后修改时间",
+    "config.field.update.channel": "更新渠道",
+    "config.field.diagnostics.enabled": "诊断已启用",
+    "config.field.diagnostics.flags": "诊断标志",
+    "config.field.diagnostics.otel.enabled": "OpenTelemetry 已启用",
+    "config.field.diagnostics.otel.endpoint": "OpenTelemetry 端点",
+    "config.field.diagnostics.otel.protocol": "OpenTelemetry 协议",
+    "config.field.diagnostics.otel.headers": "OpenTelemetry 请求头",
+    "config.field.diagnostics.otel.serviceName": "OpenTelemetry 服务名称",
+    "config.field.diagnostics.otel.traces": "OpenTelemetry 跟踪已启用",
+    "config.field.diagnostics.otel.metrics": "OpenTelemetry 指标已启用",
+    "config.field.diagnostics.otel.logs": "OpenTelemetry 日志已启用",
+    "config.field.diagnostics.otel.sampleRate": "OpenTelemetry 跟踪采样率",
+    "config.field.diagnostics.otel.flushIntervalMs": "OpenTelemetry 刷新间隔（毫秒）",
+    "config.field.gateway.remote.url": "远程网关 URL",
+    "config.field.gateway.remote.sshTarget": "远程网关 SSH 目标",
+    "config.field.gateway.remote.sshIdentity": "远程网关 SSH 身份",
+    "config.field.gateway.remote.token": "远程网关令牌",
+    "config.field.gateway.remote.password": "远程网关密码",
+    "config.field.gateway.remote.tlsFingerprint": "远程网关 TLS 指纹",
+    "config.field.gateway.auth.token": "网关令牌",
+    "config.field.gateway.auth.password": "网关密码",
+    "config.field.gateway.controlUi.basePath": "控制 UI 基础路径",
+    "config.field.gateway.controlUi.allowInsecureAuth": "允许不安全的控制 UI 身份验证",
+    "config.field.gateway.controlUi.dangerouslyDisableDeviceAuth": "危险：禁用控制 UI 设备身份验证",
+    "config.field.gateway.http.endpoints.chatCompletions.enabled": "OpenAI 聊天补全端点",
+    "config.field.gateway.reload.mode": "配置重载模式",
+    "config.field.gateway.reload.debounceMs": "配置重载防抖（毫秒）",
+    "config.field.gateway.nodes.browser.mode": "网关节点浏览器模式",
+    "config.field.gateway.nodes.browser.node": "网关节点浏览器固定",
+    "config.field.gateway.nodes.allowCommands": "网关节点允许列表（额外命令）",
+    "config.field.gateway.nodes.denyCommands": "网关节点拒绝列表",
+    "config.field.tools.media.image.enabled": "启用图像理解",
+    "config.field.tools.media.image.maxBytes": "图像理解最大字节数",
+    "config.field.tools.media.image.maxChars": "图像理解最大字符数",
+    "config.field.tools.media.image.prompt": "图像理解提示",
+    "config.field.tools.media.image.timeoutSeconds": "图像理解超时（秒）",
+    "config.field.tools.media.image.attachments": "图像理解附件策略",
+    "config.field.tools.media.image.models": "图像理解模型",
+    "config.field.tools.media.image.scope": "图像理解作用域",
+    "config.field.tools.media.models": "媒体理解共享模型",
+    "config.field.tools.media.concurrency": "媒体理解并发数",
+    "config.field.tools.media.audio.enabled": "启用音频理解",
+    "config.field.tools.media.audio.maxBytes": "音频理解最大字节数",
+    "config.field.tools.media.audio.maxChars": "音频理解最大字符数",
+    "config.field.tools.media.audio.prompt": "音频理解提示",
+    "config.field.tools.media.audio.timeoutSeconds": "音频理解超时（秒）",
+    "config.field.tools.media.audio.language": "音频理解语言",
+    "config.field.tools.media.audio.attachments": "音频理解附件策略",
+    "config.field.tools.media.audio.models": "音频理解模型",
+    "config.field.tools.media.audio.scope": "音频理解作用域",
+    "config.field.tools.media.video.enabled": "启用视频理解",
+    "config.field.tools.media.video.maxBytes": "视频理解最大字节数",
+    "config.field.tools.media.video.maxChars": "视频理解最大字符数",
+    "config.field.tools.media.video.prompt": "视频理解提示",
+    "config.field.tools.media.video.timeoutSeconds": "视频理解超时（秒）",
+    "config.field.tools.media.video.attachments": "视频理解附件策略",
+    "config.field.tools.media.video.models": "视频理解模型",
+    "config.field.tools.media.video.scope": "视频理解作用域",
+    "config.field.tools.links.enabled": "启用链接理解",
+    "config.field.tools.links.maxLinks": "链接理解最大链接数",
+    "config.field.tools.links.timeoutSeconds": "链接理解超时（秒）",
+    "config.field.tools.links.models": "链接理解模型",
+    "config.field.tools.links.scope": "链接理解作用域",
+    "config.field.tools.profile": "工具配置文件",
+    "config.field.tools.alsoAllow": "工具允许列表补充",
+    "config.field.tools.byProvider": "按提供商的工具策略",
+    "config.field.tools.exec.applyPatch.enabled": "启用 apply_patch",
+    "config.field.tools.exec.applyPatch.allowModels": "apply_patch 模型允许列表",
+    "config.field.tools.exec.notifyOnExit": "执行退出时通知",
+    "config.field.tools.exec.approvalRunningNoticeMs": "执行审批运行通知（毫秒）",
+    "config.field.tools.exec.host": "执行主机",
+    "config.field.tools.exec.security": "执行安全",
+    "config.field.tools.exec.ask": "执行询问",
+    "config.field.tools.exec.node": "执行节点绑定",
+    "config.field.tools.exec.pathPrepend": "执行 PATH 前置",
+    "config.field.tools.exec.safeBins": "执行安全二进制文件",
+    "config.field.tools.message.allowCrossContextSend": "允许跨上下文消息",
+    "config.field.tools.message.crossContext.allowWithinProvider": "允许跨上下文（同一提供商）",
+    "config.field.tools.message.crossContext.allowAcrossProviders": "允许跨上下文（跨提供商）",
+    "config.field.tools.message.crossContext.marker.enabled": "跨上下文标记",
+    "config.field.tools.message.crossContext.marker.prefix": "跨上下文标记前缀",
+    "config.field.tools.message.crossContext.marker.suffix": "跨上下文标记后缀",
+    "config.field.tools.message.broadcast.enabled": "启用消息广播",
+    "config.field.tools.web.search.enabled": "启用网络搜索工具",
+    "config.field.tools.web.search.provider": "网络搜索提供商",
+    "config.field.tools.web.search.apiKey": "Brave 搜索 API 密钥",
+    "config.field.tools.web.search.maxResults": "网络搜索最大结果数",
+    "config.field.tools.web.search.timeoutSeconds": "网络搜索超时（秒）",
+    "config.field.tools.web.search.cacheTtlMinutes": "网络搜索缓存 TTL（分钟）",
+    "config.field.tools.web.fetch.enabled": "启用网络获取工具",
+    "config.field.tools.web.fetch.maxChars": "网络获取最大字符数",
+    "config.field.tools.web.fetch.timeoutSeconds": "网络获取超时（秒）",
+    "config.field.tools.web.fetch.cacheTtlMinutes": "网络获取缓存 TTL（分钟）",
+    "config.field.tools.web.fetch.maxRedirects": "网络获取最大重定向数",
+    "config.field.tools.web.fetch.userAgent": "网络获取 User-Agent",
+    "config.field.agents.defaults.workspace": "工作区",
+    "config.field.agents.defaults.repoRoot": "仓库根目录",
+    "config.field.agents.defaults.bootstrapMaxChars": "引导最大字符数",
+    "config.field.agents.defaults.envelopeTimezone": "信封时区",
+    "config.field.agents.defaults.envelopeTimestamp": "信封时间戳",
+    "config.field.agents.defaults.envelopeElapsed": "信封经过时间",
+    "config.field.agents.defaults.memorySearch": "记忆搜索",
+    "config.field.agents.defaults.memorySearch.enabled": "启用记忆搜索",
+    "config.field.agents.defaults.memorySearch.sources": "记忆搜索源",
+    "config.field.agents.defaults.memorySearch.experimental.sessionMemory": "记忆搜索会话索引（实验性）",
+    "config.field.agents.defaults.memorySearch.provider": "记忆搜索提供商",
+    "config.field.agents.defaults.memorySearch.remote.baseUrl": "远程嵌入基础 URL",
+    "config.field.agents.defaults.memorySearch.remote.apiKey": "远程嵌入 API 密钥",
+    "config.field.agents.defaults.memorySearch.remote.headers": "远程嵌入请求头",
+    "config.field.agents.defaults.memorySearch.remote.batch.concurrency": "远程批处理并发数",
+    "config.field.agents.defaults.memorySearch.model": "记忆搜索模型",
+    "config.field.agents.defaults.memorySearch.fallback": "记忆搜索回退",
+    "config.field.agents.defaults.memorySearch.local.modelPath": "本地嵌入模型路径",
+    "config.field.agents.defaults.memorySearch.store.path": "记忆搜索索引路径",
+    "config.field.agents.defaults.memorySearch.store.vector.enabled": "记忆搜索向量索引",
+    "config.field.agents.defaults.memorySearch.store.vector.extensionPath": "记忆搜索向量扩展路径",
+    "config.field.agents.defaults.memorySearch.chunking.tokens": "记忆块令牌数",
+    "config.field.agents.defaults.memorySearch.chunking.overlap": "记忆块重叠令牌数",
+    "config.field.agents.defaults.memorySearch.sync.onSessionStart": "会话开始时索引",
+    "config.field.agents.defaults.memorySearch.sync.onSearch": "搜索时索引（延迟）",
+    "config.field.agents.defaults.memorySearch.sync.watch": "监视记忆文件",
+    "config.field.agents.defaults.memorySearch.sync.watchDebounceMs": "记忆监视防抖（毫秒）",
+    "config.field.agents.defaults.memorySearch.sync.sessions.deltaBytes": "会话增量字节数",
+    "config.field.agents.defaults.memorySearch.sync.sessions.deltaMessages": "会话增量消息数",
+    "config.field.agents.defaults.memorySearch.query.maxResults": "记忆搜索最大结果数",
+    "config.field.agents.defaults.memorySearch.query.minScore": "记忆搜索最小分数",
+    "config.field.agents.defaults.memorySearch.query.hybrid.enabled": "记忆搜索混合",
+    "config.field.agents.defaults.memorySearch.query.hybrid.vectorWeight": "记忆搜索向量权重",
+    "config.field.agents.defaults.memorySearch.query.hybrid.textWeight": "记忆搜索文本权重",
+    "config.field.agents.defaults.memorySearch.query.hybrid.candidateMultiplier": "记忆搜索混合候选倍数",
+    "config.field.agents.defaults.memorySearch.cache.enabled": "记忆搜索嵌入缓存",
+    "config.field.agents.defaults.memorySearch.cache.maxEntries": "记忆搜索嵌入缓存最大条目数",
+    "config.field.agents.defaults.models": "模型",
+    "config.field.agents.defaults.model.primary": "主要模型",
+    "config.field.agents.defaults.model.fallbacks": "模型回退",
+    "config.field.agents.defaults.imageModel.primary": "图像模型",
+    "config.field.agents.defaults.imageModel.fallbacks": "图像模型回退",
+    "config.field.agents.defaults.humanDelay.mode": "人工延迟模式",
+    "config.field.agents.defaults.humanDelay.minMs": "人工延迟最小（毫秒）",
+    "config.field.agents.defaults.humanDelay.maxMs": "人工延迟最大（毫秒）",
+    "config.field.agents.defaults.cliBackends": "CLI 后端",
+    "config.field.auth.profiles": "身份验证配置文件",
+    "config.field.auth.order": "身份验证配置文件顺序",
+    "config.field.auth.cooldowns.billingBackoffHours": "计费退避（小时）",
+    "config.field.auth.cooldowns.billingBackoffHoursByProvider": "计费退避覆盖",
+    "config.field.auth.cooldowns.billingMaxHours": "计费退避上限（小时）",
+    "config.field.auth.cooldowns.failureWindowHours": "故障转移窗口（小时）",
+    "config.field.commands.native": "原生命令",
+    "config.field.commands.nativeSkills": "原生技能命令",
+    "config.field.commands.text": "文本命令",
+    "config.field.commands.bash": "允许 Bash 聊天命令",
+    "config.field.commands.bashForegroundMs": "Bash 前台窗口（毫秒）",
+    "config.field.commands.config": "允许 /config",
+    "config.field.commands.debug": "允许 /debug",
+    "config.field.commands.restart": "允许重启",
+    "config.field.commands.useAccessGroups": "使用访问组",
+    "config.field.ui.seamColor": "强调色",
+    "config.field.ui.assistant.name": "助手名称",
+    "config.field.ui.assistant.avatar": "助手头像",
+    "config.field.browser.evaluateEnabled": "浏览器评估已启用",
+    "config.field.browser.snapshotDefaults": "浏览器快照默认值",
+    "config.field.browser.snapshotDefaults.mode": "浏览器快照模式",
+    "config.field.browser.remoteCdpTimeoutMs": "远程 CDP 超时（毫秒）",
+    "config.field.browser.remoteCdpHandshakeTimeoutMs": "远程 CDP 握手超时（毫秒）",
+    "config.field.session.dmScope": "私信会话作用域",
+    "config.field.session.agentToAgent.maxPingPongTurns": "代理到代理乒乓轮数",
+    "config.field.messages.ackReaction": "确认反应表情",
+    "config.field.messages.ackReactionScope": "确认反应作用域",
+    "config.field.messages.inbound.debounceMs": "入站消息防抖（毫秒）",
+    "config.field.talk.apiKey": "Talk API 密钥",
+    "config.field.skills.load.watch": "监视技能",
+    "config.field.skills.load.watchDebounceMs": "技能监视防抖（毫秒）",
+    "config.field.plugins.enabled": "启用插件",
+    "config.field.plugins.allow": "插件允许列表",
+    "config.field.plugins.deny": "插件拒绝列表",
+    "config.field.plugins.load.paths": "插件加载路径",
+    "config.field.plugins.slots": "插件插槽",
+    "config.field.plugins.slots.memory": "记忆插件",
+    "config.field.plugins.entries": "插件条目",
+    "config.field.discovery.mdns.mode": "mDNS 发现模式",
+    "config.field.nodeHost.browserProxy.enabled": "节点浏览器代理已启用",
+    "config.field.nodeHost.browserProxy.allowProfiles": "节点浏览器代理允许的配置文件",
+    "config.field.agents.list.identity.avatar": "代理头像",
+    "config.field.agents.list.tools.profile": "代理工具配置文件",
+    "config.field.agents.list.tools.alsoAllow": "代理工具允许列表补充",
+    "config.field.agents.list.tools.byProvider": "代理工具按提供商的策略",
+    "config.field.plugins.entries.enabled": "插件已启用",
+    "config.field.plugins.entries.config": "插件配置",
+    "config.field.plugins.installs.source": "插件安装源",
+    "config.field.plugins.installs.spec": "插件安装规格",
+    "config.field.plugins.installs.sourcePath": "插件安装源路径",
+    "config.field.plugins.installs.installPath": "插件安装路径",
+    "config.field.plugins.installs.version": "插件安装版本",
+    "config.field.plugins.installs.installedAt": "插件安装时间",
+    "channels.discord.field.accounts": "账户",
+    "channels.discord.field.actions": "操作",
+    "channels.discord.field.dm": "私信",
+    "channels.discord.field.guilds": "服务器",
+    "channels.discord.field.token": "令牌",
+    "channels.discord.field.enabled": "启用",
+    "channels.discord.field.groupPolicy": "群组策略",
+    "channels.discord.field.groupAllowFrom": "群组允许来源",
+    "channels.discord.field.allowFrom": "允许来源",
+    "channels.discord.field.requireMention": "需要提及",
+    "channels.discord.field.channels": "频道",
+    "channels.discord.field.slashCommand": "斜杠命令",
+    "channels.whatsapp.field.accounts": "账户",
+    "channels.whatsapp.field.actions": "操作",
+    "channels.whatsapp.field.dmPolicy": "私信策略",
+    "channels.whatsapp.field.groupPolicy": "群组策略",
+    "channels.whatsapp.field.allowFrom": "允许来源",
+    "channels.whatsapp.field.groupAllowFrom": "群组允许来源",
+    "channels.whatsapp.field.groups": "群组",
+    "channels.whatsapp.field.enabled": "启用",
+    "channels.whatsapp.field.selfChatMode": "自聊天模式",
+    "channels.whatsapp.field.debounceMs": "防抖（毫秒）",
+    "channels.slack.field.accounts": "账户",
+    "channels.slack.field.actions": "操作",
+    "channels.slack.field.dm": "私信",
+    "channels.slack.field.channels": "频道",
+    "channels.slack.field.guilds": "工作区",
+    "channels.slack.field.botToken": "机器人令牌",
+    "channels.slack.field.appToken": "应用令牌",
+    "channels.slack.field.userToken": "用户令牌",
+    "channels.slack.field.enabled": "启用",
+    "channels.slack.field.groupPolicy": "群组策略",
+    "channels.slack.field.allowFrom": "允许来源",
+    "channels.slack.field.requireMention": "需要提及",
+    "channels.slack.field.slashCommand": "斜杠命令",
+    "channels.signal.field.accounts": "账户",
+    "channels.signal.field.actions": "操作",
+    "channels.signal.field.dmPolicy": "私信策略",
+    "channels.signal.field.groupPolicy": "群组策略",
+    "channels.signal.field.allowFrom": "允许来源",
+    "channels.signal.field.groupAllowFrom": "群组允许来源",
+    "channels.signal.field.groups": "群组",
+    "channels.signal.field.enabled": "启用",
+    "channels.signal.field.account": "账户",
+    "channels.signal.field.baseUrl": "基础 URL",
+    "channels.imessage.field.accounts": "账户",
+    "channels.imessage.field.actions": "操作",
+    "channels.imessage.field.dmPolicy": "私信策略",
+    "channels.imessage.field.groupPolicy": "群组策略",
+    "channels.imessage.field.allowFrom": "允许来源",
+    "channels.imessage.field.groupAllowFrom": "群组允许来源",
+    "channels.imessage.field.groups": "群组",
+    "channels.imessage.field.enabled": "启用",
+    "channels.imessage.field.cliPath": "CLI 路径",
+    "channels.googlechat.field.accounts": "账户",
+    "channels.googlechat.field.actions": "操作",
+    "channels.googlechat.field.enabled": "启用",
+    "channels.googlechat.field.credential": "凭据",
+    "channels.googlechat.field.audience": "受众",
     "channels.discord.subtitle": "机器人状态和渠道配置。",
     "channels.googlechat.subtitle": "聊天 API Webhook 状态和渠道配置。",
     "channels.config.schemaUnavailable": "架构不可用。使用原始模式。",
@@ -1057,11 +1741,8 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "logs.search.placeholder": "搜索日志",
     "logs.card.title": "日志",
     "logs.card.subtitle": "网关文件日志（JSONL）。",
-    "logs.filter": "筛选",
-    "logs.autoFollow": "自动跟随",
     "logs.export.filtered": "导出筛选",
     "logs.export.visible": "导出可见",
-    "logs.empty": "暂无日志条目。",
     "logs.file": "文件：",
     "logs.truncated.message": "日志输出已截断；显示最新块。",
     "logs.level.trace": "跟踪",
@@ -1294,6 +1975,348 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "channels.telegram.probe": "Probe",
     "channels.telegram.probeOk": "ok",
     "channels.telegram.probeFailed": "failed",
+    "channels.telegram.field.accounts": "Accounts",
+    "channels.telegram.field.actions": "Actions",
+    "channels.telegram.field.deleteMessage": "Delete Message",
+    "channels.telegram.field.reactions": "Reactions",
+    "channels.telegram.field.sendMessage": "Send Message",
+    "channels.telegram.field.sticker": "Sticker",
+    "channels.telegram.field.allowFrom": "Allow From",
+    "channels.telegram.field.groupPolicy": "Group Policy",
+    "channels.telegram.field.dmPolicy": "DM Policy",
+    "channels.telegram.field.groupAllowFrom": "Group Allow From",
+    "channels.telegram.field.groups": "Groups",
+    "channels.telegram.field.enabled": "Enabled",
+    "channels.telegram.field.botToken": "Bot Token",
+    "channels.telegram.field.requireMention": "Require Mention",
+    "channels.telegram.field.customCommands": "Custom Commands",
+    "channels.telegram.field.streamMode": "Stream Mode",
+    "channels.telegram.field.draftChunk": "Draft Chunk",
+    "channels.telegram.field.retry": "Retry",
+    "channels.telegram.field.network": "Network",
+    "channels.telegram.field.timeoutSeconds": "Timeout (seconds)",
+    "channels.telegram.field.capabilities": "Capabilities",
+    "channels.telegram.field.inlineButtons": "Inline Buttons",
+    "channels.telegram.field.blockStreaming": "Block Streaming",
+    "channels.telegram.field.blockStreamingCoalesce": "Block Streaming Coalesce",
+    "channels.telegram.field.idleMs": "Idle Ms",
+    "channels.telegram.field.maxChars": "Max Chars",
+    "channels.telegram.field.minChars": "Min Chars",
+    "channels.telegram.field.chunkMode": "Chunk Mode",
+    "channels.telegram.field.length": "length",
+    "channels.telegram.field.newline": "newline",
+    "channels.telegram.field.commands": "Commands",
+    "channels.telegram.field.native": "Native",
+    "channels.telegram.field.nativeSkills": "Native Skills",
+    "channels.telegram.field.configWrites": "Config Writes",
+    "channels.telegram.field.dmHistoryLimit": "Dm History Limit",
+    "channels.telegram.field.dms": "Dms",
+    "channels.telegram.field.replyToMode": "Reply To Mode",
+    "channels.telegram.field.off": "off",
+    "channels.telegram.field.first": "first",
+    "channels.telegram.field.all": "all",
+    "channels.telegram.field.attempts": "Attempts",
+    "channels.telegram.field.jitter": "Jitter",
+    "channels.telegram.field.maxDelayMs": "Max Delay (ms)",
+    "channels.telegram.field.minDelayMs": "Min Delay (ms)",
+    "channels.telegram.field.breakPreference": "Break Preference",
+    "channels.telegram.field.paragraph": "paragraph",
+    "channels.telegram.field.sentence": "sentence",
+    "channels.telegram.field.partial": "partial",
+    "channels.telegram.field.block": "block",
+    "channels.telegram.field.reactionNotifications": "Reaction Notifications",
+    "channels.telegram.field.own": "own",
+    "channels.telegram.field.textChunkLimit": "Text Chunk Limit",
+    "channels.telegram.field.tokenFile": "Token File",
+    "channels.telegram.field.webhookPath": "Webhook Path",
+    "channels.telegram.field.webhookSecret": "Webhook Secret",
+    "channels.telegram.field.webhookUrl": "Webhook Url",
+    "channels.telegram.field.useIndicator": "Use Indicator",
+    "channels.telegram.field.historyLimit": "History Limit",
+    "channels.telegram.field.linkPreview": "Link Preview",
+    "channels.telegram.field.markdown": "Markdown",
+    "channels.telegram.field.tables": "Tables",
+    "channels.telegram.field.mediaMaxMb": "Media Max Mb",
+    "channels.telegram.field.bullets": "bullets",
+    "channels.telegram.field.code": "code",
+    "channels.telegram.field.pairing": "pairing",
+    "channels.telegram.field.allowlist": "allowlist",
+    "channels.telegram.field.open": "open",
+    "channels.telegram.field.disabled": "disabled",
+    "channels.telegram.field.ack": "ack",
+    "channels.telegram.field.minimal": "minimal",
+    "channels.telegram.field.extensive": "extensive",
+    "channels.telegram.field.draftChunk.minChars": "Telegram Draft Chunk Min Chars",
+    "channels.telegram.field.draftChunk.maxChars": "Telegram Draft Chunk Max Chars",
+    "channels.telegram.field.draftChunk.breakPreference": "Telegram Draft Chunk Break Preference",
+    "channels.telegram.field.retry.attempts": "Telegram Retry Attempts",
+    "channels.telegram.field.retry.minDelayMs": "Telegram Retry Min Delay (ms)",
+    "channels.telegram.field.retry.maxDelayMs": "Telegram Retry Max Delay (ms)",
+    "channels.telegram.field.retry.jitter": "Telegram Retry Jitter",
+    "channels.telegram.field.network.autoSelectFamily": "Telegram autoSelectFamily",
+    "channels.telegram.field.capabilities.inlineButtons": "Telegram Inline Buttons",
+    "config.field.update.checkOnStart": "Update Check on Start",
+    "config.field.diagnostics.cacheTrace": "Cache Trace",
+    "config.field.diagnostics.cacheTrace.enabled": "Cache Trace Enabled",
+    "config.field.diagnostics.cacheTrace.filePath": "Cache Trace File Path",
+    "config.field.diagnostics.cacheTrace.includeMessages": "Cache Trace Include Messages",
+    "config.field.diagnostics.cacheTrace.includePrompt": "Cache Trace Include Prompt",
+    "config.field.diagnostics.cacheTrace.includeSystem": "Cache Trace Include System",
+    "config.field.meta.lastTouchedVersion": "Config Last Touched Version",
+    "config.field.meta.lastTouchedAt": "Config Last Touched At",
+    "config.field.update.channel": "Update Channel",
+    "config.field.diagnostics.enabled": "Diagnostics Enabled",
+    "config.field.diagnostics.flags": "Diagnostics Flags",
+    "config.field.diagnostics.otel.enabled": "OpenTelemetry Enabled",
+    "config.field.diagnostics.otel.endpoint": "OpenTelemetry Endpoint",
+    "config.field.diagnostics.otel.protocol": "OpenTelemetry Protocol",
+    "config.field.diagnostics.otel.headers": "OpenTelemetry Headers",
+    "config.field.diagnostics.otel.serviceName": "OpenTelemetry Service Name",
+    "config.field.diagnostics.otel.traces": "OpenTelemetry Traces Enabled",
+    "config.field.diagnostics.otel.metrics": "OpenTelemetry Metrics Enabled",
+    "config.field.diagnostics.otel.logs": "OpenTelemetry Logs Enabled",
+    "config.field.diagnostics.otel.sampleRate": "OpenTelemetry Trace Sample Rate",
+    "config.field.diagnostics.otel.flushIntervalMs": "OpenTelemetry Flush Interval (ms)",
+    "config.field.gateway.remote.url": "Remote Gateway URL",
+    "config.field.gateway.remote.sshTarget": "Remote Gateway SSH Target",
+    "config.field.gateway.remote.sshIdentity": "Remote Gateway SSH Identity",
+    "config.field.gateway.remote.token": "Remote Gateway Token",
+    "config.field.gateway.remote.password": "Remote Gateway Password",
+    "config.field.gateway.remote.tlsFingerprint": "Remote Gateway TLS Fingerprint",
+    "config.field.gateway.auth.token": "Gateway Token",
+    "config.field.gateway.auth.password": "Gateway Password",
+    "config.field.gateway.controlUi.basePath": "Control UI Base Path",
+    "config.field.gateway.controlUi.allowInsecureAuth": "Allow Insecure Control UI Auth",
+    "config.field.gateway.controlUi.dangerouslyDisableDeviceAuth": "Dangerously Disable Control UI Device Auth",
+    "config.field.gateway.http.endpoints.chatCompletions.enabled": "OpenAI Chat Completions Endpoint",
+    "config.field.gateway.reload.mode": "Config Reload Mode",
+    "config.field.gateway.reload.debounceMs": "Config Reload Debounce (ms)",
+    "config.field.gateway.nodes.browser.mode": "Gateway Node Browser Mode",
+    "config.field.gateway.nodes.browser.node": "Gateway Node Browser Pin",
+    "config.field.gateway.nodes.allowCommands": "Gateway Node Allowlist (Extra Commands)",
+    "config.field.gateway.nodes.denyCommands": "Gateway Node Denylist",
+    "config.field.tools.media.image.enabled": "Enable Image Understanding",
+    "config.field.tools.media.image.maxBytes": "Image Understanding Max Bytes",
+    "config.field.tools.media.image.maxChars": "Image Understanding Max Chars",
+    "config.field.tools.media.image.prompt": "Image Understanding Prompt",
+    "config.field.tools.media.image.timeoutSeconds": "Image Understanding Timeout (sec)",
+    "config.field.tools.media.image.attachments": "Image Understanding Attachment Policy",
+    "config.field.tools.media.image.models": "Image Understanding Models",
+    "config.field.tools.media.image.scope": "Image Understanding Scope",
+    "config.field.tools.media.models": "Media Understanding Shared Models",
+    "config.field.tools.media.concurrency": "Media Understanding Concurrency",
+    "config.field.tools.media.audio.enabled": "Enable Audio Understanding",
+    "config.field.tools.media.audio.maxBytes": "Audio Understanding Max Bytes",
+    "config.field.tools.media.audio.maxChars": "Audio Understanding Max Chars",
+    "config.field.tools.media.audio.prompt": "Audio Understanding Prompt",
+    "config.field.tools.media.audio.timeoutSeconds": "Audio Understanding Timeout (sec)",
+    "config.field.tools.media.audio.language": "Audio Understanding Language",
+    "config.field.tools.media.audio.attachments": "Audio Understanding Attachment Policy",
+    "config.field.tools.media.audio.models": "Audio Understanding Models",
+    "config.field.tools.media.audio.scope": "Audio Understanding Scope",
+    "config.field.tools.media.video.enabled": "Enable Video Understanding",
+    "config.field.tools.media.video.maxBytes": "Video Understanding Max Bytes",
+    "config.field.tools.media.video.maxChars": "Video Understanding Max Chars",
+    "config.field.tools.media.video.prompt": "Video Understanding Prompt",
+    "config.field.tools.media.video.timeoutSeconds": "Video Understanding Timeout (sec)",
+    "config.field.tools.media.video.attachments": "Video Understanding Attachment Policy",
+    "config.field.tools.media.video.models": "Video Understanding Models",
+    "config.field.tools.media.video.scope": "Video Understanding Scope",
+    "config.field.tools.links.enabled": "Enable Link Understanding",
+    "config.field.tools.links.maxLinks": "Link Understanding Max Links",
+    "config.field.tools.links.timeoutSeconds": "Link Understanding Timeout (sec)",
+    "config.field.tools.links.models": "Link Understanding Models",
+    "config.field.tools.links.scope": "Link Understanding Scope",
+    "config.field.tools.profile": "Tool Profile",
+    "config.field.tools.alsoAllow": "Tool Allowlist Additions",
+    "config.field.tools.byProvider": "Tool Policy by Provider",
+    "config.field.tools.exec.applyPatch.enabled": "Enable apply_patch",
+    "config.field.tools.exec.applyPatch.allowModels": "apply_patch Model Allowlist",
+    "config.field.tools.exec.notifyOnExit": "Exec Notify On Exit",
+    "config.field.tools.exec.approvalRunningNoticeMs": "Exec Approval Running Notice (ms)",
+    "config.field.tools.exec.host": "Exec Host",
+    "config.field.tools.exec.security": "Exec Security",
+    "config.field.tools.exec.ask": "Exec Ask",
+    "config.field.tools.exec.node": "Exec Node Binding",
+    "config.field.tools.exec.pathPrepend": "Exec PATH Prepend",
+    "config.field.tools.exec.safeBins": "Exec Safe Bins",
+    "config.field.tools.message.allowCrossContextSend": "Allow Cross-Context Messaging",
+    "config.field.tools.message.crossContext.allowWithinProvider": "Allow Cross-Context (Same Provider)",
+    "config.field.tools.message.crossContext.allowAcrossProviders": "Allow Cross-Context (Across Providers)",
+    "config.field.tools.message.crossContext.marker.enabled": "Cross-Context Marker",
+    "config.field.tools.message.crossContext.marker.prefix": "Cross-Context Marker Prefix",
+    "config.field.tools.message.crossContext.marker.suffix": "Cross-Context Marker Suffix",
+    "config.field.tools.message.broadcast.enabled": "Enable Message Broadcast",
+    "config.field.tools.web.search.enabled": "Enable Web Search Tool",
+    "config.field.tools.web.search.provider": "Web Search Provider",
+    "config.field.tools.web.search.apiKey": "Brave Search API Key",
+    "config.field.tools.web.search.maxResults": "Web Search Max Results",
+    "config.field.tools.web.search.timeoutSeconds": "Web Search Timeout (sec)",
+    "config.field.tools.web.search.cacheTtlMinutes": "Web Search Cache TTL (min)",
+    "config.field.tools.web.fetch.enabled": "Enable Web Fetch Tool",
+    "config.field.tools.web.fetch.maxChars": "Web Fetch Max Chars",
+    "config.field.tools.web.fetch.timeoutSeconds": "Web Fetch Timeout (sec)",
+    "config.field.tools.web.fetch.cacheTtlMinutes": "Web Fetch Cache TTL (min)",
+    "config.field.tools.web.fetch.maxRedirects": "Web Fetch Max Redirects",
+    "config.field.tools.web.fetch.userAgent": "Web Fetch User-Agent",
+    "config.field.agents.defaults.workspace": "Workspace",
+    "config.field.agents.defaults.repoRoot": "Repo Root",
+    "config.field.agents.defaults.bootstrapMaxChars": "Bootstrap Max Chars",
+    "config.field.agents.defaults.envelopeTimezone": "Envelope Timezone",
+    "config.field.agents.defaults.envelopeTimestamp": "Envelope Timestamp",
+    "config.field.agents.defaults.envelopeElapsed": "Envelope Elapsed",
+    "config.field.agents.defaults.memorySearch": "Memory Search",
+    "config.field.agents.defaults.memorySearch.enabled": "Enable Memory Search",
+    "config.field.agents.defaults.memorySearch.sources": "Memory Search Sources",
+    "config.field.agents.defaults.memorySearch.experimental.sessionMemory": "Memory Search Session Index (Experimental)",
+    "config.field.agents.defaults.memorySearch.provider": "Memory Search Provider",
+    "config.field.agents.defaults.memorySearch.remote.baseUrl": "Remote Embedding Base URL",
+    "config.field.agents.defaults.memorySearch.remote.apiKey": "Remote Embedding API Key",
+    "config.field.agents.defaults.memorySearch.remote.headers": "Remote Embedding Headers",
+    "config.field.agents.defaults.memorySearch.remote.batch.concurrency": "Remote Batch Concurrency",
+    "config.field.agents.defaults.memorySearch.model": "Memory Search Model",
+    "config.field.agents.defaults.memorySearch.fallback": "Memory Search Fallback",
+    "config.field.agents.defaults.memorySearch.local.modelPath": "Local Embedding Model Path",
+    "config.field.agents.defaults.memorySearch.store.path": "Memory Search Index Path",
+    "config.field.agents.defaults.memorySearch.store.vector.enabled": "Memory Search Vector Index",
+    "config.field.agents.defaults.memorySearch.store.vector.extensionPath": "Memory Search Vector Extension Path",
+    "config.field.agents.defaults.memorySearch.chunking.tokens": "Memory Chunk Tokens",
+    "config.field.agents.defaults.memorySearch.chunking.overlap": "Memory Chunk Overlap Tokens",
+    "config.field.agents.defaults.memorySearch.sync.onSessionStart": "Index on Session Start",
+    "config.field.agents.defaults.memorySearch.sync.onSearch": "Index on Search (Lazy)",
+    "config.field.agents.defaults.memorySearch.sync.watch": "Watch Memory Files",
+    "config.field.agents.defaults.memorySearch.sync.watchDebounceMs": "Memory Watch Debounce (ms)",
+    "config.field.agents.defaults.memorySearch.sync.sessions.deltaBytes": "Session Delta Bytes",
+    "config.field.agents.defaults.memorySearch.sync.sessions.deltaMessages": "Session Delta Messages",
+    "config.field.agents.defaults.memorySearch.query.maxResults": "Memory Search Max Results",
+    "config.field.agents.defaults.memorySearch.query.minScore": "Memory Search Min Score",
+    "config.field.agents.defaults.memorySearch.query.hybrid.enabled": "Memory Search Hybrid",
+    "config.field.agents.defaults.memorySearch.query.hybrid.vectorWeight": "Memory Search Vector Weight",
+    "config.field.agents.defaults.memorySearch.query.hybrid.textWeight": "Memory Search Text Weight",
+    "config.field.agents.defaults.memorySearch.query.hybrid.candidateMultiplier": "Memory Search Hybrid Candidate Multiplier",
+    "config.field.agents.defaults.memorySearch.cache.enabled": "Memory Search Embedding Cache",
+    "config.field.agents.defaults.memorySearch.cache.maxEntries": "Memory Search Embedding Cache Max Entries",
+    "config.field.agents.defaults.models": "Models",
+    "config.field.agents.defaults.model.primary": "Primary Model",
+    "config.field.agents.defaults.model.fallbacks": "Model Fallbacks",
+    "config.field.agents.defaults.imageModel.primary": "Image Model",
+    "config.field.agents.defaults.imageModel.fallbacks": "Image Model Fallbacks",
+    "config.field.agents.defaults.humanDelay.mode": "Human Delay Mode",
+    "config.field.agents.defaults.humanDelay.minMs": "Human Delay Min (ms)",
+    "config.field.agents.defaults.humanDelay.maxMs": "Human Delay Max (ms)",
+    "config.field.agents.defaults.cliBackends": "CLI Backends",
+    "config.field.auth.profiles": "Auth Profiles",
+    "config.field.auth.order": "Auth Profile Order",
+    "config.field.auth.cooldowns.billingBackoffHours": "Billing Backoff (hours)",
+    "config.field.auth.cooldowns.billingBackoffHoursByProvider": "Billing Backoff Overrides",
+    "config.field.auth.cooldowns.billingMaxHours": "Billing Backoff Cap (hours)",
+    "config.field.auth.cooldowns.failureWindowHours": "Failover Window (hours)",
+    "config.field.commands.native": "Native Commands",
+    "config.field.commands.nativeSkills": "Native Skill Commands",
+    "config.field.commands.text": "Text Commands",
+    "config.field.commands.bash": "Allow Bash Chat Command",
+    "config.field.commands.bashForegroundMs": "Bash Foreground Window (ms)",
+    "config.field.commands.config": "Allow /config",
+    "config.field.commands.debug": "Allow /debug",
+    "config.field.commands.restart": "Allow Restart",
+    "config.field.commands.useAccessGroups": "Use Access Groups",
+    "config.field.ui.seamColor": "Accent Color",
+    "config.field.ui.assistant.name": "Assistant Name",
+    "config.field.ui.assistant.avatar": "Assistant Avatar",
+    "config.field.browser.evaluateEnabled": "Browser Evaluate Enabled",
+    "config.field.browser.snapshotDefaults": "Browser Snapshot Defaults",
+    "config.field.browser.snapshotDefaults.mode": "Browser Snapshot Mode",
+    "config.field.browser.remoteCdpTimeoutMs": "Remote CDP Timeout (ms)",
+    "config.field.browser.remoteCdpHandshakeTimeoutMs": "Remote CDP Handshake Timeout (ms)",
+    "config.field.session.dmScope": "DM Session Scope",
+    "config.field.session.agentToAgent.maxPingPongTurns": "Agent-to-Agent Ping-Pong Turns",
+    "config.field.messages.ackReaction": "Ack Reaction Emoji",
+    "config.field.messages.ackReactionScope": "Ack Reaction Scope",
+    "config.field.messages.inbound.debounceMs": "Inbound Message Debounce (ms)",
+    "config.field.talk.apiKey": "Talk API Key",
+    "config.field.skills.load.watch": "Watch Skills",
+    "config.field.skills.load.watchDebounceMs": "Skills Watch Debounce (ms)",
+    "config.field.plugins.enabled": "Enable Plugins",
+    "config.field.plugins.allow": "Plugin Allowlist",
+    "config.field.plugins.deny": "Plugin Denylist",
+    "config.field.plugins.load.paths": "Plugin Load Paths",
+    "config.field.plugins.slots": "Plugin Slots",
+    "config.field.plugins.slots.memory": "Memory Plugin",
+    "config.field.plugins.entries": "Plugin Entries",
+    "config.field.discovery.mdns.mode": "mDNS Discovery Mode",
+    "config.field.nodeHost.browserProxy.enabled": "Node Browser Proxy Enabled",
+    "config.field.nodeHost.browserProxy.allowProfiles": "Node Browser Proxy Allowed Profiles",
+    "config.field.agents.list.identity.avatar": "Agent Avatar",
+    "config.field.agents.list.tools.profile": "Agent Tool Profile",
+    "config.field.agents.list.tools.alsoAllow": "Agent Tool Allowlist Additions",
+    "config.field.agents.list.tools.byProvider": "Agent Tool Policy by Provider",
+    "config.field.plugins.entries.enabled": "Plugin Enabled",
+    "config.field.plugins.entries.config": "Plugin Config",
+    "config.field.plugins.installs.source": "Plugin Install Source",
+    "config.field.plugins.installs.spec": "Plugin Install Spec",
+    "config.field.plugins.installs.sourcePath": "Plugin Install Source Path",
+    "config.field.plugins.installs.installPath": "Plugin Install Path",
+    "config.field.plugins.installs.version": "Plugin Install Version",
+    "config.field.plugins.installs.installedAt": "Plugin Install Time",
+    "channels.discord.field.accounts": "Accounts",
+    "channels.discord.field.actions": "Actions",
+    "channels.discord.field.dm": "DM",
+    "channels.discord.field.guilds": "Guilds",
+    "channels.discord.field.token": "Token",
+    "channels.discord.field.enabled": "Enabled",
+    "channels.discord.field.groupPolicy": "Group Policy",
+    "channels.discord.field.groupAllowFrom": "Group Allow From",
+    "channels.discord.field.allowFrom": "Allow From",
+    "channels.discord.field.requireMention": "Require Mention",
+    "channels.discord.field.channels": "Channels",
+    "channels.discord.field.slashCommand": "Slash Command",
+    "channels.whatsapp.field.accounts": "Accounts",
+    "channels.whatsapp.field.actions": "Actions",
+    "channels.whatsapp.field.dmPolicy": "DM Policy",
+    "channels.whatsapp.field.groupPolicy": "Group Policy",
+    "channels.whatsapp.field.allowFrom": "Allow From",
+    "channels.whatsapp.field.groupAllowFrom": "Group Allow From",
+    "channels.whatsapp.field.groups": "Groups",
+    "channels.whatsapp.field.enabled": "Enabled",
+    "channels.whatsapp.field.selfChatMode": "Self Chat Mode",
+    "channels.whatsapp.field.debounceMs": "Debounce (ms)",
+    "channels.slack.field.accounts": "Accounts",
+    "channels.slack.field.actions": "Actions",
+    "channels.slack.field.dm": "DM",
+    "channels.slack.field.channels": "Channels",
+    "channels.slack.field.guilds": "Workspaces",
+    "channels.slack.field.botToken": "Bot Token",
+    "channels.slack.field.appToken": "App Token",
+    "channels.slack.field.userToken": "User Token",
+    "channels.slack.field.enabled": "Enabled",
+    "channels.slack.field.groupPolicy": "Group Policy",
+    "channels.slack.field.allowFrom": "Allow From",
+    "channels.slack.field.requireMention": "Require Mention",
+    "channels.slack.field.slashCommand": "Slash Command",
+    "channels.signal.field.accounts": "Accounts",
+    "channels.signal.field.actions": "Actions",
+    "channels.signal.field.dmPolicy": "DM Policy",
+    "channels.signal.field.groupPolicy": "Group Policy",
+    "channels.signal.field.allowFrom": "Allow From",
+    "channels.signal.field.groupAllowFrom": "Group Allow From",
+    "channels.signal.field.groups": "Groups",
+    "channels.signal.field.enabled": "Enabled",
+    "channels.signal.field.account": "Account",
+    "channels.signal.field.baseUrl": "Base URL",
+    "channels.imessage.field.accounts": "Accounts",
+    "channels.imessage.field.actions": "Actions",
+    "channels.imessage.field.dmPolicy": "DM Policy",
+    "channels.imessage.field.groupPolicy": "Group Policy",
+    "channels.imessage.field.allowFrom": "Allow From",
+    "channels.imessage.field.groupAllowFrom": "Group Allow From",
+    "channels.imessage.field.groups": "Groups",
+    "channels.imessage.field.enabled": "Enabled",
+    "channels.imessage.field.cliPath": "CLI Path",
+    "channels.googlechat.field.accounts": "Accounts",
+    "channels.googlechat.field.actions": "Actions",
+    "channels.googlechat.field.enabled": "Enabled",
+    "channels.googlechat.field.credential": "Credential",
+    "channels.googlechat.field.audience": "Audience",
     "channels.discord.subtitle": "Bot status and channel configuration.",
     "channels.googlechat.subtitle": "Chat API webhook status and channel configuration.",
     "channels.config.schemaUnavailable": "Schema unavailable. Use Raw.",
@@ -1581,16 +2604,12 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "logs.filter": "Filter",
     "logs.autoFollow": "Auto-follow",
     "logs.truncated": "Truncated",
-    "logs.empty": "No logs",
     "logs.lastUpdated": "Last updated: {timestamp}",
     "logs.search.placeholder": "Search logs",
     "logs.card.title": "Logs",
     "logs.card.subtitle": "Gateway file logs (JSONL).",
-    "logs.filter": "Filter",
-    "logs.autoFollow": "Auto-follow",
     "logs.export.filtered": "Export filtered",
     "logs.export.visible": "Export visible",
-    "logs.empty": "No log entries.",
     "logs.file": "File:",
     "logs.truncated.message": "Log output truncated; showing latest chunk.",
     "logs.level.trace": "trace",
@@ -1723,7 +2742,6 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "configForm.customEntries": "Custom entries",
     "configForm.unsupportedArraySchema": "Unsupported array schema. Use Raw mode.",
     "configForm.unsupportedType": "Unsupported type: {type}. Use Raw mode.",
-    "configForm.unsupportedSchemaNode": "Unsupported schema node. Use Raw mode.",
     // Exec approval
     "execApproval.title": "Exec Approval",
     "execApproval.allowOnce": "Allow Once",

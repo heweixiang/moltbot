@@ -11,7 +11,125 @@ import {
   type JsonSchema,
 } from "./config-form.shared";
 
+// Translate common config field names
+function translateFieldName(key: string, path: Array<string | number>): string {
+  // Check if it's a channel config field
+  if (path.length >= 2 && path[0] === "channels") {
+    const channelId = path[1];
+    const fieldKey = `channels.${channelId}.field.${key}` as any;
+    try {
+      const translated = t(fieldKey);
+      if (translated && !translated.startsWith("[")) {
+        return translated;
+      }
+    } catch {}
+  }
+  
+  // Fallback to humanize
+  return humanize(key);
+}
+
 const META_KEYS = new Set(["title", "description", "default", "nullable"]);
+
+// Translate field name for channel configs and general config fields
+function translateFieldLabel(
+  fieldKey: string,
+  path: Array<string | number>,
+  hintLabel?: string,
+  schemaTitle?: string,
+): string {
+  // Use hint label if available (highest priority)
+  if (hintLabel) return hintLabel;
+  
+  // Build full path key for translation lookup
+  const fullPath = path.filter((p) => typeof p === "string").join(".");
+  
+  // Try to translate schema title for channel configs
+  if (schemaTitle && path.length >= 2 && path[0] === "channels") {
+    const channelId = path[1];
+    // Try to translate the full schema title using the path
+    if (path.length > 2) {
+      const nestedPath = path.slice(2).join(".");
+      const fullTranslationKey = `channels.${channelId}.field.${nestedPath}` as any;
+      try {
+        const translated = t(fullTranslationKey);
+        if (translated && !translated.startsWith("[")) {
+          return translated;
+        }
+      } catch {}
+    }
+    // Try with just the field key
+    const translationKey = `channels.${channelId}.field.${fieldKey}` as any;
+    try {
+      const translated = t(translationKey);
+      if (translated && !translated.startsWith("[")) {
+        return translated;
+      }
+    } catch {}
+  }
+  
+  // Try to translate general config fields (non-channel)
+  if (fullPath && path[0] !== "channels") {
+    // Try with full path first
+    const configTranslationKey = `config.field.${fullPath}` as any;
+    try {
+      const translated = t(configTranslationKey);
+      if (translated && !translated.startsWith("[")) {
+        return translated;
+      }
+    } catch {}
+    
+    // Try with wildcard patterns replaced (e.g., agents.list[0].tools.profile -> agents.list.tools.profile)
+    const normalizedPath = fullPath
+      .replace(/\[.*?\]/g, "") // Remove array indices like [0], []
+      .replace(/\.\*/g, "") // Remove wildcard .*
+      .replace(/\.\./g, ".") // Replace double dots with single dot
+      .replace(/^\.|\.$/g, ""); // Remove leading/trailing dots
+    if (normalizedPath !== fullPath) {
+      const normalizedTranslationKey = `config.field.${normalizedPath}` as any;
+      try {
+        const translated = t(normalizedTranslationKey);
+        if (translated && !translated.startsWith("[")) {
+          return translated;
+        }
+      } catch {}
+    }
+  }
+  
+  // Use schema title if translation not found
+  if (schemaTitle) return schemaTitle;
+  
+  // Try to translate field name for channel configs
+  if (path.length >= 2 && path[0] === "channels") {
+    const channelId = path[1];
+    
+    // For nested paths like ["channels", "telegram", "draftChunk", "minChars"],
+    // try both the full path and just the field key
+    // First try: full nested path (e.g., "channels.telegram.field.draftChunk.minChars")
+    if (path.length > 2) {
+      const nestedPath = path.slice(2).join(".");
+      const fullTranslationKey = `channels.${channelId}.field.${nestedPath}` as any;
+      try {
+        const translated = t(fullTranslationKey);
+        if (translated && !translated.startsWith("[")) {
+          return translated;
+        }
+      } catch {}
+    }
+    
+    // Second try: just the field key (e.g., "channels.telegram.field.minChars")
+    const translationKey = `channels.${channelId}.field.${fieldKey}` as any;
+    try {
+      const translated = t(translationKey);
+      if (translated && !translated.startsWith("[")) {
+        return translated;
+      }
+    } catch {}
+  }
+  
+  // Fallback to humanize
+  return humanize(fieldKey);
+}
 
 function isAnySchema(schema: JsonSchema): boolean {
   const keys = Object.keys(schema ?? {}).filter((key) => !META_KEYS.has(key));
@@ -50,7 +168,8 @@ export function renderNode(params: {
   const showLabel = params.showLabel ?? true;
   const type = schemaType(schema);
   const hint = hintForPath(path, hints);
-  const label = hint?.label ?? schema.title ?? humanize(String(path.at(-1)));
+  const fieldKey = String(path.at(-1));
+  const label = translateFieldLabel(fieldKey, path, hint?.label, schema.title);
   const help = hint?.help ?? schema.description;
   const key = pathKey(path);
 
@@ -229,7 +348,8 @@ function renderTextInput(params: {
   const { schema, value, path, hints, disabled, onPatch, inputType } = params;
   const showLabel = params.showLabel ?? true;
   const hint = hintForPath(path, hints);
-  const label = hint?.label ?? schema.title ?? humanize(String(path.at(-1)));
+  const fieldKey = String(path.at(-1));
+  const label = translateFieldLabel(fieldKey, path, hint?.label, schema.title);
   const help = hint?.help ?? schema.description;
   const isSensitive = hint?.sensitive ?? isSensitivePath(path);
   const placeholder =
@@ -288,7 +408,8 @@ function renderNumberInput(params: {
   const { schema, value, path, hints, disabled, onPatch } = params;
   const showLabel = params.showLabel ?? true;
   const hint = hintForPath(path, hints);
-  const label = hint?.label ?? schema.title ?? humanize(String(path.at(-1)));
+  const fieldKey = String(path.at(-1));
+  const label = translateFieldLabel(fieldKey, path, hint?.label, schema.title);
   const help = hint?.help ?? schema.description;
   const displayValue = value ?? schema.default ?? "";
   const numValue = typeof displayValue === "number" ? displayValue : 0;
@@ -339,7 +460,8 @@ function renderSelect(params: {
   const { schema, value, path, hints, disabled, options, onPatch } = params;
   const showLabel = params.showLabel ?? true;
   const hint = hintForPath(path, hints);
-  const label = hint?.label ?? schema.title ?? humanize(String(path.at(-1)));
+  const fieldKey = String(path.at(-1));
+  const label = translateFieldLabel(fieldKey, path, hint?.label, schema.title);
   const help = hint?.help ?? schema.description;
   const resolvedValue = value ?? schema.default;
   const currentIndex = options.findIndex(
@@ -382,7 +504,8 @@ function renderObject(params: {
   const { schema, value, path, hints, unsupported, disabled, onPatch } = params;
   const showLabel = params.showLabel ?? true;
   const hint = hintForPath(path, hints);
-  const label = hint?.label ?? schema.title ?? humanize(String(path.at(-1)));
+  const fieldKey = String(path.at(-1));
+  const label = translateFieldLabel(fieldKey, path, hint?.label, schema.title);
   const help = hint?.help ?? schema.description;
 
   const fallback = value ?? schema.default;
@@ -481,7 +604,8 @@ function renderArray(params: {
   const { schema, value, path, hints, unsupported, disabled, onPatch } = params;
   const showLabel = params.showLabel ?? true;
   const hint = hintForPath(path, hints);
-  const label = hint?.label ?? schema.title ?? humanize(String(path.at(-1)));
+  const fieldKey = String(path.at(-1));
+  const label = translateFieldLabel(fieldKey, path, hint?.label, schema.title);
   const help = hint?.help ?? schema.description;
 
   const itemsSchema = Array.isArray(schema.items) ? schema.items[0] : schema.items;
