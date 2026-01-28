@@ -55,7 +55,7 @@ export function renderTelegramCard(params: {
   return html`
     <div class="card">
       <div class="card-title">Telegram</div>
-      <div class="card-sub">${t("channels.telegram.subtitle")}</div>
+      <div class="card-sub">${t("channels.telegram.blurb")}</div>
       ${accountCountLabel}
 
       ${hasMultipleAccounts

@@ -314,6 +314,7 @@ export type TranslationKey =
   | "channels.whatsapp.logout"
   | "channels.whatsapp.qrAlt"
   | "channels.telegram.subtitle"
+  | "channels.telegram.blurb"
   | "channels.telegram.probe"
   | "channels.telegram.probeOk"
   | "channels.telegram.probeFailed"
@@ -460,6 +461,53 @@ export type TranslationKey =
   | "skill.description.apple-notes"
   | "skill.description.apple-reminders"
   | "skill.description.bear-notes"
+  | "skill.description.bird"
+  | "skill.description.blogwatcher"
+  | "skill.description.blucli"
+  | "skill.description.bluebubbles"
+  | "skill.description.camsnap"
+  | "skill.description.clawdhub"
+  | "skill.description.coding-agent"
+  | "skill.description.trello"
+  | "skill.description.video-frames"
+  | "skill.description.voice-call"
+  | "skill.description.wacli"
+  | "skill.description.weather"
+  | "skill.description.tmux"
+  | "skill.description.things-mac"
+  | "skill.description.summarize"
+  | "skill.description.sonoscli"
+  | "skill.description.spotify-player"
+  | "skill.description.songsee"
+  | "skill.description.slack"
+  | "skill.description.skill-creator"
+  | "skill.description.sherpa-onnx-tts"
+  | "skill.description.session-logs"
+  | "skill.description.sag"
+  | "skill.description.ordercli"
+  | "skill.description.peekaboo"
+  | "skill.description.openhue"
+  | "skill.description.oracle"
+  | "skill.description.openai-whisper"
+  | "skill.description.openai-whisper-api"
+  | "skill.description.openai-image-gen"
+  | "skill.description.notion"
+  | "skill.description.obsidian"
+  | "skill.description.nano-pdf"
+  | "skill.description.nano-banana-pro"
+  | "skill.description.model-usage"
+  | "skill.description.mcporter"
+  | "skill.description.local-places"
+  | "skill.description.imsg"
+  | "skill.description.himalaya"
+  | "skill.description.goplaces"
+  | "skill.description.gog"
+  | "skill.description.github"
+  | "skill.description.gemini"
+  | "skill.description.gifgrep"
+  | "skill.description.eightctl"
+  | "skill.description.food-order"
+  | "skill.description.discord"
   // Config sections
   | "config.section.env"
   | "config.section.update"
@@ -520,6 +568,19 @@ export type TranslationKey =
   | "config.noSettingsMatch"
   | "config.noSettingsInSection"
   | "config.unsupportedSchemaNode"
+  // Config form
+  | "configForm.add"
+  | "configForm.addEntry"
+  | "configForm.removeItem"
+  | "configForm.resetToDefault"
+  | "configForm.select"
+  | "configForm.noItems"
+  | "configForm.items"
+  | "configForm.item"
+  | "configForm.customEntries"
+  | "configForm.unsupportedArraySchema"
+  | "configForm.unsupportedType"
+  | "configForm.unsupportedSchemaNode"
   // Debug snapshots
   | "debug.snapshots.title"
   | "debug.snapshots.subtitle"
@@ -700,6 +761,7 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "channels.whatsapp.logout": "登出",
     "channels.whatsapp.qrAlt": "WhatsApp 二维码",
     "channels.telegram.subtitle": "机器人状态和渠道配置。",
+    "channels.telegram.blurb": "最简单的入门方式 — 通过 @BotFather 注册机器人即可开始。",
     "channels.telegram.probe": "探测",
     "channels.telegram.probeOk": "探测正常",
     "channels.telegram.probeFailed": "探测失败",
@@ -981,6 +1043,7 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "configForm.customEntries": "自定义条目",
     "configForm.unsupportedArraySchema": "不支持的数组架构。使用原始模式。",
     "configForm.unsupportedType": "不支持的类型：{type}。使用原始模式。",
+    "configForm.unsupportedSchemaNode": "不支持的架构节点。使用原始模式。",
     // Logs
     "logs.title": "日志",
     "logs.subtitle": "网关文件日志的实时跟踪。",
@@ -1012,6 +1075,53 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "skill.description.apple-notes": "通过 macOS 上的 'memo' CLI 管理 Apple Notes（创建、查看、编辑、删除、搜索、移动和导出笔记）。当用户要求 Moltbot 处理 Apple Notes 相关任务时使用。",
     "skill.description.apple-reminders": "通过 macOS 上的 'remindctl' CLI 管理 Apple Reminders（列出、添加、编辑、完成、删除）。支持列表、日期过滤和 JSON/纯文本输出。",
     "skill.description.bear-notes": "通过 macOS 上的 'bear' CLI 管理 Bear 笔记（创建、编辑、搜索、标记、归档、删除）。支持标签、链接和 Markdown 格式。",
+    "skill.description.bird": "使用 X/Twitter CLI 通过 cookie 认证进行阅读、搜索、发帖和互动。",
+    "skill.description.blogwatcher": "使用 blogwatcher CLI 监控博客和 RSS/Atom 源更新。",
+    "skill.description.blucli": "BluOS CLI (blu) 用于发现、播放、分组和音量控制。",
+    "skill.description.bluebubbles": "构建或更新 Moltbot 的 BlueBubbles 外部渠道插件（扩展包、REST 发送/探测、webhook 入站）。",
+    "skill.description.camsnap": "从 RTSP/ONVIF 摄像头捕获帧或片段。",
+    "skill.description.clawdhub": "使用 ClawdHub CLI 从 clawdhub.com 搜索、安装、更新和发布代理技能。当需要动态获取新技能、同步已安装技能到最新版本或特定版本，或发布新的/更新的技能文件夹时使用。",
+    "skill.description.coding-agent": "通过后台进程运行 Codex CLI、Claude Code、OpenCode 或 Pi Coding Agent 以实现程序化控制。",
+    "skill.description.trello": "通过 Trello REST API 管理 Trello 看板、列表和卡片。",
+    "skill.description.video-frames": "使用 ffmpeg 从视频中提取帧或短片片段。",
+    "skill.description.voice-call": "通过 Moltbot voice-call 插件启动语音通话。",
+    "skill.description.wacli": "通过 wacli CLI 向其他人发送 WhatsApp 消息或搜索/同步 WhatsApp 历史记录（不用于普通用户聊天）。",
+    "skill.description.weather": "获取当前天气和预报（无需 API 密钥）。",
+    "skill.description.tmux": "通过发送按键和抓取窗格输出来远程控制 tmux 会话以进行交互式 CLI。",
+    "skill.description.things-mac": "通过 macOS 上的 `things` CLI 管理 Things 3（通过 URL 方案添加/更新项目和待办事项；从本地 Things 数据库读取/搜索/列表）。当用户要求 Moltbot 向 Things 添加任务、列出收件箱/今天/即将到来、搜索任务或检查项目/区域/标签时使用。",
+    "skill.description.summarize": "从 URL、播客和本地文件中总结或提取文本/转录（非常适合\"转录此 YouTube/视频\"的备用方案）。",
+    "skill.description.sonoscli": "控制 Sonos 扬声器（发现/状态/播放/音量/分组）。",
+    "skill.description.spotify-player": "通过 spogo（首选）或 spotify_player 进行终端 Spotify 播放/搜索。",
+    "skill.description.songsee": "使用 songsee CLI 从音频生成频谱图和特征面板可视化。",
+    "skill.description.slack": "当你需要通过 slack 工具从 Moltbot 控制 Slack 时使用，包括对消息做出反应或在 Slack 频道或私信中固定/取消固定项目。",
+    "skill.description.skill-creator": "创建或更新 AgentSkills。在设计、构建或打包包含脚本、参考和资源的技能时使用。",
+    "skill.description.sherpa-onnx-tts": "通过 sherpa-onnx 进行本地文本转语音（离线，无云端）。",
+    "skill.description.session-logs": "使用 jq 搜索和分析你自己的会话日志（较旧的/父对话）。",
+    "skill.description.sag": "使用 mac 风格的 say UX 进行 ElevenLabs 文本转语音。",
+    "skill.description.ordercli": "仅限 Foodora 的 CLI，用于检查过去的订单和活动订单状态（Deliveroo 进行中）。",
+    "skill.description.peekaboo": "使用 Peekaboo CLI 捕获和自动化 macOS UI。",
+    "skill.description.openhue": "通过 OpenHue CLI 控制 Philips Hue 灯光/场景。",
+    "skill.description.oracle": "使用 oracle CLI 的最佳实践（提示 + 文件打包、引擎、会话和文件附件模式）。",
+    "skill.description.openai-whisper": "使用 Whisper CLI 进行本地语音转文本（无需 API 密钥）。",
+    "skill.description.openai-whisper-api": "通过 OpenAI 音频转录 API（Whisper）转录音频。",
+    "skill.description.openai-image-gen": "通过 OpenAI Images API 批量生成图像。随机提示采样器 + `index.html` 画廊。",
+    "skill.description.notion": "Notion API，用于创建和管理页面、数据库和块。",
+    "skill.description.obsidian": "使用 Obsidian 保险库（纯 Markdown 笔记）并通过 obsidian-cli 自动化。",
+    "skill.description.nano-pdf": "使用 nano-pdf CLI 通过自然语言指令编辑 PDF。",
+    "skill.description.nano-banana-pro": "通过 Gemini 3 Pro Image（Nano Banana Pro）生成或编辑图像。",
+    "skill.description.model-usage": "使用 CodexBar CLI 本地成本使用情况来总结 Codex 或 Claude 的每个模型使用情况，包括当前（最新）模型或完整的模型分解。当被要求从 codexbar 获取模型级别的使用/成本数据时触发，或当你需要从 codexbar 成本 JSON 获取可脚本化的每个模型摘要时使用。",
+    "skill.description.mcporter": "使用 mcporter CLI 列出、配置、认证并直接调用 MCP 服务器/工具（HTTP 或 stdio），包括临时服务器、配置编辑和 CLI/类型生成。",
+    "skill.description.local-places": "通过 localhost 上的 Google Places API 代理搜索地点（餐厅、咖啡馆等）。",
+    "skill.description.imsg": "iMessage/SMS CLI，用于列出聊天、历史记录、监视和发送。",
+    "skill.description.himalaya": "通过 IMAP/SMTP 管理电子邮件的 CLI。使用 `himalaya` 从终端列出、读取、编写、回复、转发、搜索和组织电子邮件。支持多个账户和使用 MML（MIME 元语言）的消息编写。",
+    "skill.description.goplaces": "通过 goplaces CLI 查询 Google Places API（新版本）进行文本搜索、地点详情、解析和评论。用于人性化的地点查找或脚本的 JSON 输出。",
+    "skill.description.gog": "Google Workspace CLI，用于 Gmail、Calendar、Drive、Contacts、Sheets 和 Docs。",
+    "skill.description.github": "使用 `gh` CLI 与 GitHub 交互。使用 `gh issue`、`gh pr`、`gh run` 和 `gh api` 处理问题、PR、CI 运行和高级查询。",
+    "skill.description.gemini": "Gemini CLI，用于一次性问答、摘要和生成。",
+    "skill.description.gifgrep": "使用 CLI/TUI 搜索 GIF 提供商，下载结果并提取静态图像/表格。",
+    "skill.description.eightctl": "控制 Eight Sleep pods（状态、温度、闹钟、时间表）。",
+    "skill.description.food-order": "重新订购 Foodora 订单 + 使用 ordercli 跟踪 ETA/状态。未经明确用户批准绝不确认。触发器：订购食物、重新订购、跟踪 ETA。",
+    "skill.description.discord": "当你需要通过 discord 工具从 Moltbot 控制 Discord 时使用：发送消息、反应、发布或上传贴纸、上传表情符号、运行投票、管理线程/固定/搜索、创建/编辑/删除频道和类别、获取权限或成员/角色/频道信息，或在 Discord 私信或频道中处理审核操作。",
     // Exec approval
     "execApproval.title": "执行审批",
     "execApproval.allowOnce": "允许一次",
@@ -1180,6 +1290,7 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "channels.whatsapp.logout": "Logout",
     "channels.whatsapp.qrAlt": "WhatsApp QR",
     "channels.telegram.subtitle": "Bot status and channel configuration.",
+    "channels.telegram.blurb": "simplest way to get started — register a bot with @BotFather and get going.",
     "channels.telegram.probe": "Probe",
     "channels.telegram.probeOk": "ok",
     "channels.telegram.probeFailed": "failed",
@@ -1461,6 +1572,7 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "configForm.customEntries": "Custom entries",
     "configForm.unsupportedArraySchema": "Unsupported array schema. Use Raw mode.",
     "configForm.unsupportedType": "Unsupported type: {type}. Use Raw mode.",
+    "configForm.unsupportedSchemaNode": "Unsupported schema node. Use Raw mode.",
     // Logs
     "logs.title": "Logs",
     "logs.subtitle": "Live tail of the gateway file logs.",
@@ -1492,6 +1604,53 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "skill.description.apple-notes": "Manage Apple Notes via the 'memo' CLI on macOS (create, view, edit, delete, search, move, and export notes). Use when a user asks Moltbot to work with Apple Notes.",
     "skill.description.apple-reminders": "Manage Apple Reminders via the 'remindctl' CLI on macOS (list, add, edit, complete, delete). Supports lists, date filters, and JSON/plain output.",
     "skill.description.bear-notes": "Manage Bear notes via the 'bear' CLI on macOS (create, edit, search, tag, archive, delete). Supports tags, links, and Markdown formatting.",
+    "skill.description.bird": "X/Twitter CLI for reading, searching, posting, and engagement via cookies.",
+    "skill.description.blogwatcher": "Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI.",
+    "skill.description.blucli": "BluOS CLI (blu) for discovery, playback, grouping, and volume.",
+    "skill.description.bluebubbles": "Build or update the BlueBubbles external channel plugin for Moltbot (extension package, REST send/probe, webhook inbound).",
+    "skill.description.camsnap": "Capture frames or clips from RTSP/ONVIF cameras.",
+    "skill.description.clawdhub": "Use the ClawdHub CLI to search, install, update, and publish agent skills from clawdhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawdhub CLI.",
+    "skill.description.coding-agent": "Run Codex CLI, Claude Code, OpenCode, or Pi Coding Agent via background process for programmatic control.",
+    "skill.description.trello": "Manage Trello boards, lists, and cards via the Trello REST API.",
+    "skill.description.video-frames": "Extract frames or short clips from videos using ffmpeg.",
+    "skill.description.voice-call": "Start voice calls via the Moltbot voice-call plugin.",
+    "skill.description.wacli": "Send WhatsApp messages to other people or search/sync WhatsApp history via the wacli CLI (not for normal user chats).",
+    "skill.description.weather": "Get current weather and forecasts (no API key required).",
+    "skill.description.tmux": "Remote-control tmux sessions for interactive CLIs by sending keystrokes and scraping pane output.",
+    "skill.description.things-mac": "Manage Things 3 via the `things` CLI on macOS (add/update projects+todos via URL scheme; read/search/list from the local Things database). Use when a user asks Moltbot to add a task to Things, list inbox/today/upcoming, search tasks, or inspect projects/areas/tags.",
+    "skill.description.summarize": "Summarize or extract text/transcripts from URLs, podcasts, and local files (great fallback for \"transcribe this YouTube/video\").",
+    "skill.description.sonoscli": "Control Sonos speakers (discover/status/play/volume/group).",
+    "skill.description.spotify-player": "Terminal Spotify playback/search via spogo (preferred) or spotify_player.",
+    "skill.description.songsee": "Generate spectrograms and feature-panel visualizations from audio with the songsee CLI.",
+    "skill.description.slack": "Use when you need to control Slack from Moltbot via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.",
+    "skill.description.skill-creator": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+    "skill.description.sherpa-onnx-tts": "Local text-to-speech via sherpa-onnx (offline, no cloud)",
+    "skill.description.session-logs": "Search and analyze your own session logs (older/parent conversations) using jq.",
+    "skill.description.sag": "ElevenLabs text-to-speech with mac-style say UX.",
+    "skill.description.ordercli": "Foodora-only CLI for checking past orders and active order status (Deliveroo WIP).",
+    "skill.description.peekaboo": "Capture and automate macOS UI with the Peekaboo CLI.",
+    "skill.description.openhue": "Control Philips Hue lights/scenes via the OpenHue CLI.",
+    "skill.description.oracle": "Best practices for using the oracle CLI (prompt + file bundling, engines, sessions, and file attachment patterns).",
+    "skill.description.openai-whisper": "Local speech-to-text with the Whisper CLI (no API key).",
+    "skill.description.openai-whisper-api": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+    "skill.description.openai-image-gen": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+    "skill.description.notion": "Notion API for creating and managing pages, databases, and blocks.",
+    "skill.description.obsidian": "Work with Obsidian vaults (plain Markdown notes) and automate via obsidian-cli.",
+    "skill.description.nano-pdf": "Edit PDFs with natural-language instructions using the nano-pdf CLI.",
+    "skill.description.nano-banana-pro": "Generate or edit images via Gemini 3 Pro Image (Nano Banana Pro).",
+    "skill.description.model-usage": "Use CodexBar CLI local cost usage to summarize per-model usage for Codex or Claude, including the current (most recent) model or a full model breakdown. Trigger when asked for model-level usage/cost data from codexbar, or when you need a scriptable per-model summary from codexbar cost JSON.",
+    "skill.description.mcporter": "Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), including ad-hoc servers, config edits, and CLI/type generation.",
+    "skill.description.local-places": "Search for places (restaurants, cafes, etc.) via Google Places API proxy on localhost.",
+    "skill.description.imsg": "iMessage/SMS CLI for listing chats, history, watch, and sending.",
+    "skill.description.himalaya": "CLI to manage emails via IMAP/SMTP. Use `himalaya` to list, read, write, reply, forward, search, and organize emails from the terminal. Supports multiple accounts and message composition with MML (MIME Meta Language).",
+    "skill.description.goplaces": "Query Google Places API (New) via the goplaces CLI for text search, place details, resolve, and reviews. Use for human-friendly place lookup or JSON output for scripts.",
+    "skill.description.gog": "Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs.",
+    "skill.description.github": "Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.",
+    "skill.description.gemini": "Gemini CLI for one-shot Q&A, summaries, and generation.",
+    "skill.description.gifgrep": "Search GIF providers with CLI/TUI, download results, and extract stills/sheets.",
+    "skill.description.eightctl": "Control Eight Sleep pods (status, temperature, alarms, schedules).",
+    "skill.description.food-order": "Reorder Foodora orders + track ETA/status with ordercli. Never confirm without explicit user approval. Triggers: order food, reorder, track ETA.",
+    "skill.description.discord": "Use when you need to control Discord from Moltbot via the discord tool: send messages, react, post or upload stickers, upload emojis, run polls, manage threads/pins/search, create/edit/delete channels and categories, fetch permissions or member/role/channel info, or handle moderation actions in Discord DMs or channels.",
     // Config sections
     "config.section.env": "Environment Variables",
     "config.section.update": "Updates",
@@ -1564,6 +1723,7 @@ const messages: Record<Locale, Record<TranslationKey, string>> = {
     "configForm.customEntries": "Custom entries",
     "configForm.unsupportedArraySchema": "Unsupported array schema. Use Raw mode.",
     "configForm.unsupportedType": "Unsupported type: {type}. Use Raw mode.",
+    "configForm.unsupportedSchemaNode": "Unsupported schema node. Use Raw mode.",
     // Exec approval
     "execApproval.title": "Exec Approval",
     "execApproval.allowOnce": "Allow Once",
