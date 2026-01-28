@@ -1,4 +1,5 @@
 import { html, nothing } from "lit";
+import { t } from "../i18n";
 
 import { formatEventPayload } from "../presenter";
 import type { EventLogEntry } from "../app-events";
@@ -35,48 +36,54 @@ export function renderDebug(props: DebugProps) {
       ? `${critical} critical`
       : warn > 0
         ? `${warn} warnings`
-        : "No critical issues";
+        : t("debug.noIssues");
 
   return html`
-    <section class="grid grid-cols-2">
-      <div class="card">
+    <section class="grid grid-cols-2" style="gap: 18px;">
+      <div class="card" style="min-width: 0;">
         <div class="row" style="justify-content: space-between;">
           <div>
-            <div class="card-title">Snapshots</div>
-            <div class="card-sub">Status, health, and heartbeat data.</div>
+            <div class="card-title">${t("debug.snapshots.title")}</div>
+            <div class="card-sub">${t("debug.snapshots.subtitle")}</div>
           </div>
           <button class="btn" ?disabled=${props.loading} @click=${props.onRefresh}>
-            ${props.loading ? "Refreshing…" : "Refresh"}
+            ${props.loading ? t("common.loading") : t("common.refresh")}
           </button>
         </div>
         <div class="stack" style="margin-top: 12px;">
           <div>
-            <div class="muted">Status</div>
+            <div class="muted">${t("debug.snapshots.status")}</div>
             ${securitySummary
               ? html`<div class="callout ${securityTone}" style="margin-top: 8px;">
-                  Security audit: ${securityLabel}${info > 0 ? ` · ${info} info` : ""}. Run
-                  <span class="mono">moltbot security audit --deep</span> for details.
+                  ${t("debug.snapshots.securityAudit", { label: securityLabel })}
+                  ${info > 0 ? t("debug.snapshots.securityAuditInfo", { count: info }) : ""}.
+                  ${(() => {
+                    const cmdText = "moltbot security audit --deep";
+                    const msg = t("debug.snapshots.securityAuditCommand", { command: cmdText });
+                    const parts = msg.split(cmdText);
+                    return html`${parts[0]}<span class="mono">${cmdText}</span>${parts[1]}`;
+                  })()}
                 </div>`
               : nothing}
-            <pre class="code-block">${JSON.stringify(props.status ?? {}, null, 2)}</pre>
+            <pre class="code-block" style="max-width: 100%; overflow-x: auto;">${JSON.stringify(props.status ?? {}, null, 2)}</pre>
           </div>
           <div>
-            <div class="muted">Health</div>
-            <pre class="code-block">${JSON.stringify(props.health ?? {}, null, 2)}</pre>
+            <div class="muted">${t("debug.snapshots.health")}</div>
+            <pre class="code-block" style="max-width: 100%; overflow-x: auto;">${JSON.stringify(props.health ?? {}, null, 2)}</pre>
           </div>
           <div>
-            <div class="muted">Last heartbeat</div>
-            <pre class="code-block">${JSON.stringify(props.heartbeat ?? {}, null, 2)}</pre>
+            <div class="muted">${t("debug.snapshots.heartbeat")}</div>
+            <pre class="code-block" style="max-width: 100%; overflow-x: auto;">${JSON.stringify(props.heartbeat ?? {}, null, 2)}</pre>
           </div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-title">Manual RPC</div>
-        <div class="card-sub">Send a raw gateway method with JSON params.</div>
+      <div class="card" style="min-width: 0;">
+        <div class="card-title">${t("debug.manualRpc.title")}</div>
+        <div class="card-sub">${t("debug.manualRpc.subtitle")}</div>
         <div class="form-grid" style="margin-top: 16px;">
           <label class="field">
-            <span>Method</span>
+            <span>${t("debug.manualRpc.method")}</span>
             <input
               .value=${props.callMethod}
               @input=${(e: Event) =>
@@ -85,7 +92,7 @@ export function renderDebug(props: DebugProps) {
             />
           </label>
           <label class="field">
-            <span>Params (JSON)</span>
+            <span>${t("debug.manualRpc.params")}</span>
             <textarea
               .value=${props.callParams}
               @input=${(e: Event) =>
@@ -95,7 +102,7 @@ export function renderDebug(props: DebugProps) {
           </label>
         </div>
         <div class="row" style="margin-top: 12px;">
-          <button class="btn primary" @click=${props.onCall}>Call</button>
+          <button class="btn primary" @click=${props.onCall}>${t("debug.manualRpc.call")}</button>
         </div>
         ${props.callError
           ? html`<div class="callout danger" style="margin-top: 12px;">
@@ -103,43 +110,45 @@ export function renderDebug(props: DebugProps) {
             </div>`
           : nothing}
         ${props.callResult
-          ? html`<pre class="code-block" style="margin-top: 12px;">${props.callResult}</pre>`
+          ? html`<pre class="code-block" style="margin-top: 12px; max-width: 100%; overflow-x: auto;">${props.callResult}</pre>`
           : nothing}
       </div>
     </section>
 
-    <section class="card" style="margin-top: 18px;">
-      <div class="card-title">Models</div>
-      <div class="card-sub">Catalog from models.list.</div>
-      <pre class="code-block" style="margin-top: 12px;">${JSON.stringify(
-        props.models ?? [],
-        null,
-        2,
-      )}</pre>
-    </section>
+    <section class="grid grid-cols-2" style="margin-top: 18px; gap: 18px;">
+      <div class="card" style="min-width: 0;">
+        <div class="card-title">${t("debug.models.title")}</div>
+        <div class="card-sub">${t("debug.models.subtitle")}</div>
+        <pre class="code-block" style="margin-top: 12px; max-width: 100%; overflow-x: auto;">${JSON.stringify(
+          props.models ?? [],
+          null,
+          2,
+        )}</pre>
+      </div>
 
-    <section class="card" style="margin-top: 18px;">
-      <div class="card-title">Event Log</div>
-      <div class="card-sub">Latest gateway events.</div>
-      ${props.eventLog.length === 0
-        ? html`<div class="muted" style="margin-top: 12px;">No events yet.</div>`
-        : html`
-            <div class="list" style="margin-top: 12px;">
-              ${props.eventLog.map(
-                (evt) => html`
-                  <div class="list-item">
-                    <div class="list-main">
-                      <div class="list-title">${evt.event}</div>
-                      <div class="list-sub">${new Date(evt.ts).toLocaleTimeString()}</div>
+      <div class="card" style="min-width: 0;">
+        <div class="card-title">${t("debug.eventLog.title")}</div>
+        <div class="card-sub">${t("debug.eventLog.subtitle")}</div>
+        ${props.eventLog.length === 0
+          ? html`<div class="muted" style="margin-top: 12px;">${t("debug.eventLog.empty")}</div>`
+          : html`
+              <div class="list" style="margin-top: 12px;">
+                ${props.eventLog.map(
+                  (evt) => html`
+                    <div class="list-item">
+                      <div class="list-main">
+                        <div class="list-title">${evt.event}</div>
+                        <div class="list-sub">${new Date(evt.ts).toLocaleTimeString()}</div>
+                      </div>
+                      <div class="list-meta" style="text-align: left;">
+                        <pre class="code-block" style="max-width: 100%; overflow-x: auto;">${formatEventPayload(evt.payload)}</pre>
+                      </div>
                     </div>
-                    <div class="list-meta">
-                      <pre class="code-block">${formatEventPayload(evt.payload)}</pre>
-                    </div>
-                  </div>
-                `,
-              )}
-            </div>
-          `}
+                  `,
+                )}
+              </div>
+            `}
+      </div>
     </section>
   `;
 }

@@ -1,6 +1,7 @@
 import { html, nothing } from "lit";
 import type { ConfigUiHints } from "../types";
 import { icons } from "../icons";
+import { t } from "../i18n";
 import {
   hintForPath,
   humanize,

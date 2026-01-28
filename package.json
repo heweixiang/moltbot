@@ -283,5 +283,8 @@
       "apps/macos/.build/**",
       "dist/Moltbot.app/**"
     ]
+  },
+  "volta": {
+    "node": "22.22.0"
   }
 }

@@ -11,6 +11,7 @@ import {
   titleForTab,
   type Tab,
 } from "./navigation";
+import { t } from "./i18n";
 import { icons } from "./icons";
 import type { UiSettings } from "./storage";
 import type { ThemeMode } from "./theme";
@@ -50,7 +51,7 @@ import {
   rotateDeviceToken,
 } from "./controllers/devices";
 import { renderSkills } from "./views/skills";
-import { renderChatControls, renderTab, renderThemeToggle } from "./app-render.helpers";
+import { renderChatControls, renderTab, renderThemeToggle, renderLocaleToggle } from "./app-render.helpers";
 import { loadChannels } from "./controllers/channels";
 import { loadPresence } from "./controllers/presence";
 import { deleteSession, loadSessions, patchSession } from "./controllers/sessions";
@@ -122,8 +123,8 @@ export function renderApp(state: AppViewState) {
                 ...state.settings,
                 navCollapsed: !state.settings.navCollapsed,
               })}
-            title="${state.settings.navCollapsed ? "Expand sidebar" : "Collapse sidebar"}"
-            aria-label="${state.settings.navCollapsed ? "Expand sidebar" : "Collapse sidebar"}"
+            title="${state.settings.navCollapsed ? t("sidebar.expand") : t("sidebar.collapse")}"
+            aria-label="${state.settings.navCollapsed ? t("sidebar.expand") : t("sidebar.collapse")}"
           >
             <span class="nav-collapse-toggle__icon">${icons.menu}</span>
           </button>
@@ -133,22 +134,23 @@ export function renderApp(state: AppViewState) {
             </div>
             <div class="brand-text">
               <div class="brand-title">MOLTBOT</div>
-              <div class="brand-sub">Gateway Dashboard</div>
+              <div class="brand-sub">${t("brand.subtitle")}</div>
             </div>
           </div>
         </div>
         <div class="topbar-status">
           <div class="pill">
             <span class="statusDot ${state.connected ? "ok" : ""}"></span>
-            <span>Health</span>
-            <span class="mono">${state.connected ? "OK" : "Offline"}</span>
+            <span>${t("status.health")}</span>
+            <span class="mono">${state.connected ? t("status.ok") : t("status.offline")}</span>
           </div>
           ${renderThemeToggle(state)}
+          ${renderLocaleToggle(state)}
         </div>
       </header>
       <aside class="nav ${state.settings.navCollapsed ? "nav--collapsed" : ""}">
-        ${TAB_GROUPS.map((group) => {
-          const isGroupCollapsed = state.settings.navGroupsCollapsed[group.label] ?? false;
+              ${TAB_GROUPS.map((group) => {
+          const isGroupCollapsed = state.settings.navGroupsCollapsed[group.labelKey] ?? false;
           const hasActiveTab = group.tabs.some((tab) => tab === state.tab);
           return html`
             <div class="nav-group ${isGroupCollapsed && !hasActiveTab ? "nav-group--collapsed" : ""}">
@@ -156,7 +158,7 @@ export function renderApp(state: AppViewState) {
                 class="nav-label"
                 @click=${() => {
                   const next = { ...state.settings.navGroupsCollapsed };
-                  next[group.label] = !isGroupCollapsed;
+                  next[group.labelKey] = !isGroupCollapsed;
                   state.applySettings({
                     ...state.settings,
                     navGroupsCollapsed: next,
@@ -164,7 +166,7 @@ export function renderApp(state: AppViewState) {
                 }}
                 aria-expanded=${!isGroupCollapsed}
               >
-                <span class="nav-label__text">${group.label}</span>
+                <span class="nav-label__text">${t(group.labelKey)}</span>
                 <span class="nav-label__chevron">${isGroupCollapsed ? "+" : "−"}</span>
               </button>
               <div class="nav-group__items">
@@ -175,7 +177,7 @@ export function renderApp(state: AppViewState) {
         })}
         <div class="nav-group nav-group--links">
           <div class="nav-label nav-label--static">
-            <span class="nav-label__text">Resources</span>
+            <span class="nav-label__text">${t("nav.resources")}</span>
           </div>
           <div class="nav-group__items">
             <a
@@ -183,10 +185,10 @@ export function renderApp(state: AppViewState) {
               href="https://docs.molt.bot"
               target="_blank"
               rel="noreferrer"
-              title="Docs (opens in new tab)"
+              title="${t("nav.docs.tooltip")}"
             >
               <span class="nav-item__icon" aria-hidden="true">${icons.book}</span>
-              <span class="nav-item__text">Docs</span>
+              <span class="nav-item__text">${t("nav.docs")}</span>
             </a>
           </div>
         </div>
@@ -194,8 +196,8 @@ export function renderApp(state: AppViewState) {
       <main class="content ${isChat ? "content--chat" : ""}">
         <section class="content-header">
           <div>
-            <div class="page-title">${titleForTab(state.tab)}</div>
-            <div class="page-sub">${subtitleForTab(state.tab)}</div>
+            <div class="page-title">${titleForTab(state.tab, state.locale)}</div>
+            <div class="page-sub">${subtitleForTab(state.tab, state.locale)}</div>
           </div>
           <div class="page-meta">
             ${state.lastError

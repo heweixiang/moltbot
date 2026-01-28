@@ -2,6 +2,7 @@ import type { GatewayBrowserClient, GatewayHelloOk } from "./gateway";
 import type { Tab } from "./navigation";
 import type { UiSettings } from "./storage";
 import type { ThemeMode } from "./theme";
+import type { Locale } from "./i18n";
 import type { ThemeTransitionContext } from "./theme-transition";
 import type {
   AgentsListResult,
@@ -39,6 +40,7 @@ export type AppViewState = {
   connected: boolean;
   theme: ThemeMode;
   themeResolved: "light" | "dark";
+  locale: Locale;
   hello: GatewayHelloOk | null;
   lastError: string | null;
   eventLog: EventLogEntry[];

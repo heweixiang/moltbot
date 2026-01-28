@@ -7,6 +7,7 @@ import { loadSettings, type UiSettings } from "./storage";
 import { renderApp } from "./app-render";
 import type { Tab } from "./navigation";
 import type { ResolvedTheme, ThemeMode } from "./theme";
+import { getLocale, setLocale, type Locale } from "./i18n";
 import type {
   AgentsListResult,
   ConfigSnapshot,
@@ -105,6 +106,7 @@ export class MoltbotApp extends LitElement {
   @state() connected = false;
   @state() theme: ThemeMode = this.settings.theme ?? "system";
   @state() themeResolved: ResolvedTheme = "dark";
+  @state() locale: Locale = getLocale();
   @state() hello: GatewayHelloOk | null = null;
   @state() lastError: string | null = null;
   @state() eventLog: EventLogEntry[] = [];
@@ -265,6 +267,11 @@ export class MoltbotApp extends LitElement {
   private themeMedia: MediaQueryList | null = null;
   private themeMediaHandler: ((event: MediaQueryListEvent) => void) | null = null;
   private topbarObserver: ResizeObserver | null = null;
+  private localeChangeHandler = (event: Event) => {
+    const customEvent = event as CustomEvent<{ locale: Locale }>;
+    this.locale = customEvent.detail.locale;
+    this.requestUpdate();
+  };
 
   createRenderRoot() {
     return this;
@@ -272,6 +279,8 @@ export class MoltbotApp extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.locale = getLocale();
+    window.addEventListener("moltbot-locale-changed", this.localeChangeHandler);
     handleConnected(this as unknown as Parameters<typeof handleConnected>[0]);
   }
 
@@ -280,6 +289,7 @@ export class MoltbotApp extends LitElement {
   }
 
   disconnectedCallback() {
+    window.removeEventListener("moltbot-locale-changed", this.localeChangeHandler);
     handleDisconnected(this as unknown as Parameters<typeof handleDisconnected>[0]);
     super.disconnectedCallback();
   }
